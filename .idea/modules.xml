@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/.idea/WED2MiniProject.iml" filepath="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/.idea/WED2MiniProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/WED2-Miniprojekt.iml" filepath="$PROJECT_DIR$/.idea/WED2-Miniprojekt.iml" />
     </modules>
   </component>
 </project>
