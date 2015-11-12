@@ -43,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.5555556">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.045801528">
+              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -75,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EventController.js" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/classes/controllers/EventController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1319648">
-              <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
               <folding>
                 <element signature="e#1#41#0" expanded="false" />
               </folding>
@@ -125,7 +125,6 @@
         <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/package.json" />
         <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/classes/services/storageService.js" />
         <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/classes/modules/config.js" />
-        <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/.gitignore" />
         <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/index.html" />
         <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/views/events.html" />
         <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/classes/controllers/controller.references.js" />
@@ -133,6 +132,7 @@
         <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/classes/main.js" />
         <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/classes/modules/lafete.js" />
         <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/classes/controllers/EventController.js" />
+        <option value="$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/.gitignore" />
       </list>
     </option>
   </component>
@@ -660,14 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5555556">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/views/events.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.25">
@@ -724,11 +716,19 @@
     </entry>
     <entry file="file://$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/webapp/source/classes/controllers/EventController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1319648">
-          <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
           <folding>
             <element signature="e#1#41#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/2-Miniprojekt/WED2MiniProject/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.045801528">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
