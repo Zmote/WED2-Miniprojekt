@@ -23,26 +23,29 @@ require.config({
     }
 });
 
-require(['frameworks/angular', 'app/modules/lafete', 'libraries/angularRoute'], function (Angular, Lafete, route) {
+require(['frameworks/angular',
+    'app/modules/lafete',
+    'libraries/angularRoute'
+], function (Angular, Lafete, route) {
     Angular.element(document).ready(function() {
         Angular.bootstrap(document, [Lafete.name]);
     });
 
-    Lafete.config(function($routeProvider, $locationProvider) {
+    Lafete.config(function($routeProvider) {
         $routeProvider
-            .when('/events', {
-                templateUrl: '../../events.html',
-                controller: 'EventsController'
+            .when('/', {
+                templateUrl: './views/events.html',
+                controller: 'EventController'
 
 
-            })
-            .when('/Book/:bookId/ch/:chapterId', {
-                templateUrl: 'chapter.html',
-                controller: 'ChapterController'
-            });
+            }).
+            otherwise({redirectTo:'/events'})
+
 
         // configure html5 to get links working on jsfiddle
         //$locationProvider.html5Mode(true);
     });
+
+
 
 });
