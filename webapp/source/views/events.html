@@ -1,10 +1,10 @@
  <div class="lead text-center">
      <div class="nav-tabs" data-ng-repeat="event in events">
-         {{event.name}}, {{event.description}}
-         <div>Name:{{event.location.name}}</div>
-         <div>Strasse: {{event.location.street}}</div>
-         <div>Postleitzahl: {{event.location.plz}}</div>
-         <div>Ortschaft: {{event.location.city}}</div>
+         <strong>{{event.name}}</strong>
+         <div>{{event.description}}</div>
+         <div><strong>Wo?:</strong></div>
+         <div>{{event.location.name}}, {{event.location.street}},
+             {{event.location.plz}}, {{event.location.city}}
+         </div>
      </div>
-
  </div>
