@@ -1,10 +1,10 @@
  <div class="lead text-center">
-    <ul class="list-unstyled" ng-repeat="event in events">
-        <li><strong>{{event.id}}. {{event.name}}</strong></li>
-        <li>{{event.description}}</li>
-        <ul class="list-inline">
-            {{event.location.name}}
-            <li>{{event.location.street}}, {{event.location.plz}}, {{event.location.city}}</li>
-        </ul>
-    </ul>
+     <div class="nav-tabs" data-ng-repeat="event in events">
+         {{event.name}}, {{event.description}}
+         <div>Name:{{event.location.name}}</div>
+         <div>Strasse: {{event.location.street}}</div>
+         <div>Postleitzahl: {{event.location.plz}}</div>
+         <div>Ortschaft: {{event.location.city}}</div>
+     </div>
+
  </div>
