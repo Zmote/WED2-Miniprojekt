@@ -17,7 +17,7 @@ require.config({
             exports: 'angular'
         },
         'ngRoute': {
-            deps: ['angular'],
+            deps: ['angular']
 
         }
     }
