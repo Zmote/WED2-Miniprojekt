@@ -1,14 +1,16 @@
-<div class="panel-title text-center">Events</div>
+<h1 class="text-center">Events</h1>
 <div class="col-sm-12">
     <div>
         <div class="lead text-center">
              <div class="nav-tabs" data-ng-repeat="event in events">
                  <strong>{{event.name}}</strong>
                  <div>{{event.description}}</div>
-                 <div><strong>Wo?:</strong></div>
+                 <div><strong>Where?:</strong></div>
                  <div>{{event.location.name}}, {{event.location.street}},
                      {{event.location.plz}}, {{event.location.city}}
                  </div>
+                 <div><strong>Guests:</strong></div>
+                 <div data-ng-repeat="guest in event.guests">{{guest.id}}, {{guest.name}}, {{guest.contribution}}, {{guest.comment}}, {{guest.canceled}}</div>
              </div>
          </div>
     </div>
