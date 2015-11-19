@@ -7,6 +7,7 @@ define (function(){
 
     return [
         'classes/controllers/EventController',
+        'classes/controllers/AddEventController',
         'classes/services/config'
     ]
 });

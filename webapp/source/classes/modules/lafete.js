@@ -1,11 +1,10 @@
 /**
  * Created by Dogan on 12.11.15.
  */
-define(['angular','ngRoute'], function (Angular ,ngRoute) {
+define(['angular','ngRoute' ], function (Angular ,ngRoute ) {
 
 
-    var Lafete = Angular.module('lafete', ["ngRoute"]);
-
+    var Lafete = Angular.module('lafete', ["ngRoute" ]);
 
     Angular.element(document).ready(function() {
 

@@ -12,6 +12,12 @@ define([], function () {
                 controller: 'EventController'
 
 
+            })
+            .when('/addEvents', {
+                templateUrl: './views/addEvent.html',
+                controller: 'AddEventController'
+
+
             }).
             otherwise({redirectTo:'/events'})
 
