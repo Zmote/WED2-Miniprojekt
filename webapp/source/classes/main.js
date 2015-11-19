@@ -23,5 +23,7 @@ require.config({
     }
 });
 
+/* cemil dogan deneme */
+
 /*  Start the application */
 require(['app/modules/lafete']);
