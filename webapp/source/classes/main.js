@@ -11,7 +11,8 @@ require.config({
         'angular': '../frameworks/angular/angular.min',
         'ngRoute': '../libraries/angular-route/angular-route',
         'app': '../classes',
-        'event-service' : '../classes/services/eventService'
+        'event-service' : '../classes/services/eventService',
+        'angular-animate' : '../libraries/angular-animate/angular-animate'
 
     },
     // angular does not support async loading out of the box -> use the shim loader
@@ -22,7 +23,11 @@ require.config({
         'ngRoute': {
             deps: ['angular']
 
-        }
+        },
+        'angular-animate': {
+            deps: ['angular']
+        },
+
     }
 });
 

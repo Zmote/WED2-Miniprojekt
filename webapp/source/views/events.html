@@ -14,7 +14,7 @@
 <div class=".col-md-6 .col-md-offset-3 container center">
     <div>
         <div class="lead text-center">
-             <div class="nav-tabs" data-ng-repeat="event in events">
+             <div  class="nav-tabs" data-ng-repeat="event in events">
                  <strong>{{event.name}}</strong>
                  <div>{{event.description}}</div>
                  <div><strong>Where?:</strong></div>
@@ -23,6 +23,11 @@
                  </div>
                  <div><strong>Guests:</strong></div>
                  <div data-ng-repeat="guest in event.guests">{{guest.id}}, {{guest.name}}, {{guest.contribution}}, {{guest.comment}}, {{guest.canceled}}</div>
+                <a href="#/eventDetail/{{event.id}}">
+                    <button class="btn btn-info">
+                        <i class="glyphicon glyphicon-arrow-right"></i>
+                    </button>
+                </a>
              </div>
          </div>
     </div>
