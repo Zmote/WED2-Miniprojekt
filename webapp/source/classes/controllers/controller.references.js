@@ -6,8 +6,10 @@
 define (function(){
 
     return [
+        'classes/services/eventService',
         'classes/controllers/EventController',
         'classes/controllers/AddEventController',
         'classes/services/config'
+
     ]
 });
