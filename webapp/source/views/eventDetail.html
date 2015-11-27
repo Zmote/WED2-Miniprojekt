@@ -29,17 +29,17 @@
 
    <div class="col-sm-12">
     <hr>
-       <h4 class="text-info">Beschreibung</h4>
+       <h4 ng-show="selectedEvent.data.description" class="text-info">Beschreibung</h4>
        <div>{{selectedEvent.data.description}}</div>
-       <h4 class="text-info">Zielgruppe</h4>
+       <h4 ng-show="selectedEvent.data.targetGroup" class="text-info">Zielgruppe</h4>
        <div>{{selectedEvent.data.targetGroup}}</div>
-       <h4 class="text-info">Event-Beiträge</h4>
+       <h4 ng-show="selectedEvent.data.contributionsDescription" class="text-info">Event-Beiträge</h4>
        <div>{{selectedEvent.data.contributionsDescription}}</div>
-       <h4 class="text-info">Adresse</h4>
+       <h4 ng-show="selectedEvent.data.location"class="text-info">Adresse</h4>
        <div>{{selectedEvent.data.location.name}}</div>
        <div>{{selectedEvent.data.location.street}}</div>
        <div>{{selectedEvent.data.location.plz}} {{selectedEvent.data.location.city}}</div>
-       <h4 class="text-info">Zeit</h4>
+       <h4 ng-show="selectedEvent.data.times" class="text-info">Zeit</h4>
        <div>{{selectedEvent.data.times.begin | date:"fullDate"}} bis {{selectedEvent.data.times.end | date:"fullDate"}}</div>
    </div>
 

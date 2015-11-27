@@ -5,7 +5,6 @@ define([], function () {
 
 
          function AddEventController($scope,$http, EventsService){
-
              var event = $scope.event = {};
              event.contributionDescription = "";
              event.description =  "";

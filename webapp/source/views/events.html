@@ -13,21 +13,22 @@
 
 <div class=".col-md-6 .col-md-offset-3 container center">
     <div>
-        <div class="lead text-center">
-             <div  class="nav-tabs" data-ng-repeat="event in events">
-                 <strong>{{event.name}}</strong>
+        <div class="lead">
+             <div data-ng-repeat="event in events">
+                 <h3 class="text-info"><strong>{{event.name}}</strong></h3>
                  <div>{{event.description}}</div>
-                 <div><strong>Where?:</strong></div>
+                 <h4 class="text-info">Where?:</h4>
                  <div>{{event.location.name}}, {{event.location.street}},
                      {{event.location.plz}}, {{event.location.city}}
                  </div>
-                 <div><strong>Guests:</strong></div>
-                 <div data-ng-repeat="guest in event.guests">{{guest.id}}, {{guest.name}}, {{guest.contribution}}, {{guest.comment}}, {{guest.canceled}}</div>
+                 <div><h4 class="text-info">Guests:</h4></div>
+                 <span data-ng-repeat="guest in event.guests">{{guest.name}}, </span>
                 <a href="#/eventDetail/{{event.id}}">
                     <button class="btn btn-info">
                         <i class="glyphicon glyphicon-arrow-right"></i>
                     </button>
                 </a>
+                 <hr>
              </div>
          </div>
     </div>

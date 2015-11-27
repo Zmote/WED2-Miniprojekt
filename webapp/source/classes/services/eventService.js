@@ -17,6 +17,11 @@ define([], function () {
                         $http.get("/api/events/"+id).then(function (data) {
                             call(data);
                         });
+                    },
+                    saveNewGuest: function (guest,eventID, call) {
+                        $http.post("/api/events/"+ eventID+"/guests", guest).then(function (data) {
+                            call(data);
+                        });
                     }
                 }
 
