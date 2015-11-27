@@ -9,7 +9,18 @@ define([], function () {
 
     function AddPersonToEvent($scope,$http, EventsService, $routeParams){
 
+        var guest = $scope.guest = {};
+        guest.name = "";
+        guest.contribution = "";
+        guest.comment = "";
+        guest.canceled = false;
 
+        $scope.saveNewGuest = function ( guest ){
+            console.log(guest)
+            EventsService.saveNewGuest(guest, $routeParams.eventId, function (data){
+                console.log("result of saved guest", data);
+            });
+        };
 
     }
 

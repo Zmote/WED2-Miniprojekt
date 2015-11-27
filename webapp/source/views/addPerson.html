@@ -12,6 +12,42 @@
 </div>
 
 <div class=".col-md-6 .col-md-offset-3 container center">
+    <form class="form-horizontal">
 
+
+        <!-- Form Name -->
+        <legend>Form </legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="guestName">Guest name</label>
+                <div class="col-md-4">
+                    <input id="guestName" name="guestName" ng-model="guest.name" placeholder="Guest name" class="form-control input-md" type="text">
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="comment">Comment</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="comment" ng-model="guest.contribution"  name="comment">default text</textarea>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="contribution">Contribution</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="contribution" ng-model="event.contribution"  name="contribution">default text</textarea>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <button class="btn btn-info btn-lg pull-right" ng-click="saveNewGuest ( guest )"> Save </button>
+            </div>
+
+        </fieldset>
+    </form>
 
 </div>
