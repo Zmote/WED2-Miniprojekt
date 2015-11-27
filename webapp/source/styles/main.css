@@ -83,3 +83,7 @@
 .fade.ng-leave-active {
     opacity: 0;
 }
+
+.border-on-left{
+    border-left: 1px grey solid;
+}

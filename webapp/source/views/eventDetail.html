@@ -2,7 +2,7 @@
 
 <div class="row well">
  <div class="col-xs-10">
-  <h1 class="text-left margin-left-20">Lunch</h1>
+  <h1 class="text-left margin-left-20">{{selectedEvent.data.name}}</h1>
  </div>
  <div class="col-xs-2">
   <a  href="#/events" class="btn btn-info margin-top-20 margin-right-10 pull-right">
@@ -29,15 +29,31 @@
 
    <div class="col-sm-12">
     <hr>
-    {{selectedEvent | json}}
-
+       <h4 class="text-info">Beschreibung</h4>
+       <div>{{selectedEvent.data.description}}</div>
+       <h4 class="text-info">Zielgruppe</h4>
+       <div>{{selectedEvent.data.targetGroup}}</div>
+       <h4 class="text-info">Event-Beiträge</h4>
+       <div>{{selectedEvent.data.contributionsDescription}}</div>
+       <h4 class="text-info">Adresse</h4>
+       <div>{{selectedEvent.data.location.name}}</div>
+       <div>{{selectedEvent.data.location.street}}</div>
+       <div>{{selectedEvent.data.location.plz}} {{selectedEvent.data.location.city}}</div>
+       <h4 class="text-info">Zeit</h4>
+       <div>{{selectedEvent.data.times.begin | date:"fullDate"}} bis {{selectedEvent.data.times.end | date:"fullDate"}}</div>
    </div>
 
    <div class="col-sm-12">
-    <hr>
-    <div class="col-xs-10">
-     Guests
-    </div>
+   <hr>
+       <h4 class="text-info">Gäste</h4>
+       <div class="col-sm-4 border-on-left" ng-repeat="guest in selectedEvent.data.guests">
+           <div ng-hide="guest.canceled" >
+               <h5><strong>{{guest.name}}</strong></h5>
+               <div ng-show="guest.comment">Kommentar: {{guest.comment}}</div>
+               <div ng-show="guest.contribution">Beitrag: {{guest.contribution}}</div>
+           </div>
+       </div>
+
     <div class="col-xs-2 pull-right">
      <a  href="#/event/{{selectedEvent.data.id}}/person" class="btn btn-info margin-top-20 margin-right-10 pull-right">
       <i class="glyphicon glyphicon-plus"></i>
