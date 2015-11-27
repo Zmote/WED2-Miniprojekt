@@ -13,7 +13,7 @@
 
 <div class=".col-md-6 .col-md-offset-3 container center">
     <div>
-        <div class="lead">
+        <div>
              <div data-ng-repeat="event in events">
                  <h3 class="text-info"><strong>{{event.name}}</strong></h3>
                  <div>{{event.description}}</div>
@@ -22,7 +22,7 @@
                      {{event.location.plz}}, {{event.location.city}}
                  </div>
                  <div><h4 class="text-info">Guests:</h4></div>
-                 <span data-ng-repeat="guest in event.guests">{{guest.name}}, </span>
+                 <span class="border-on-left margin-right-5 padding-left-5" data-ng-repeat="guest in event.guests">{{guest.name}}</span>
                 <a href="#/eventDetail/{{event.id}}">
                     <button class="btn btn-info">
                         <i class="glyphicon glyphicon-arrow-right"></i>
