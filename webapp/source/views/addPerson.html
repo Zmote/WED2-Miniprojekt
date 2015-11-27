@@ -30,7 +30,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="comment">Comment</label>
                 <div class="col-md-4">
-                    <textarea class="form-control" id="comment" ng-model="guest.contribution"  name="comment">default text</textarea>
+                    <textarea class="form-control" id="comment" ng-model="guest.comment"  name="comment">default text</textarea>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="contribution">Contribution</label>
                 <div class="col-md-4">
-                    <textarea class="form-control" id="contribution" ng-model="event.contribution"  name="contribution">default text</textarea>
+                    <textarea class="form-control" id="contribution" ng-model="guest.contribution"  name="contribution">default text</textarea>
                 </div>
             </div>
 
@@ -49,5 +49,9 @@
 
         </fieldset>
     </form>
+
+    <!--Animated message, see how to do with angular animate
+    <div ng-show="messageStatus" class="alert alert-info fade-in">Successfully saved a new Guest!</div>
+    -->
 
 </div>

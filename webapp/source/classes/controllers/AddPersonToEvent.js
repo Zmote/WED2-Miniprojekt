@@ -8,7 +8,8 @@ define([], function () {
         .controller("AddPersonToEvent", AddPersonToEvent);
 
     function AddPersonToEvent($scope,$http, EventsService, $routeParams){
-
+        //tmp variable for message status div
+        //$scope.messageStatus = false;
         var guest = $scope.guest = {};
         guest.name = "";
         guest.contribution = "";
@@ -18,12 +19,13 @@ define([], function () {
         $scope.saveNewGuest = function ( guest ){
             console.log(guest)
             EventsService.saveNewGuest(guest, $routeParams.eventId, function (data){
+                $scope.guest = {};
+                //$scope.messageStatus = true;
                 console.log("result of saved guest", data);
             });
         };
 
     }
-
 
     AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams"];
 
