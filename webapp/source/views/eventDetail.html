@@ -1,0 +1,52 @@
+
+
+<div class="row well">
+ <div class="col-xs-10">
+  <h1 class="text-left margin-left-20">Lunch</h1>
+ </div>
+ <div class="col-xs-2">
+  <a  href="#/events" class="btn btn-info margin-top-20 margin-right-10 pull-right">
+   <i class="glyphicon glyphicon-remove"></i>
+  </a>
+ </div>
+</div>
+
+<div class=".col-md-6 .col-md-offset-3 container center">
+
+ <div class="highlight">
+  <div class="col-xs-12">
+
+    <span class="btn-clipboard .col-md-4 .col-md-offset-4 pull-right">
+      <div class="col-sm-8 margin-top-10">
+       Guests :
+      </div>
+      <div class="col-sm-4">
+       <button class="btn btn-info">
+        {{selectedEvent.data.guests.length}}
+       </button>
+      </div>
+   </span>
+
+   <div class="col-sm-12">
+    <hr>
+    {{selectedEvent | json}}
+
+   </div>
+
+   <div class="col-sm-12">
+    <hr>
+    <div class="col-xs-10">
+     Guests
+    </div>
+    <div class="col-xs-2 pull-right">
+     <a  href="#/event/{{selectedEvent.data.id}}/person" class="btn btn-info margin-top-20 margin-right-10 pull-right">
+      <i class="glyphicon glyphicon-plus"></i>
+     </a>
+    </div>
+
+   </div>
+
+ </div>
+ </div>
+
+</div>
