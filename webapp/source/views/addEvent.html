@@ -12,43 +12,50 @@
 </div>
 
 <div class=".col-md-6 .col-md-offset-3 container center">
-    <form class="form-horizontal">
+    <form class="form-horizontal" name="eventForm">
 
 
             <!-- Form Name -->
             <legend>Form </legend>
 
-            <!-- Text input-->
+            <!-- Event Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="eventName">Event name</label>
                 <div class="col-md-4">
-                    <input id="eventName" name="eventName" ng-model="event.name" placeholder="Event name" class="form-control input-md" type="text">
+
+                    <input ng-class="{'form-control input-md alert-danger':!cemil && !event.name,'form-control input-md':cemil || event.name}" id="eventName" name="eventName" ng-model="event.name" placeholder="Event name" required="" type="text">
+                </div>
+                <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.eventName.$touched">
+                    <div class="text-danger" ng-show="eventForm.eventName.$error.required">Event name is required</div>
                 </div>
             </div>
 
-            <!-- Prepended text-->
+            <!-- Begin Date: Prepended text-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="beginDate">Begin Date</label>
                 <div class="col-md-4">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i> </span>
-                        <input id="beginDate" name="beginDate" ng-model="event.time.begin" class="form-control" placeholder="Begin Date" type="text">
-
-
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input id="beginDate" name="beginDate" ng-model="event.times.begin" ng-class="{'form-control input-md alert-danger':!cemil && !event.times.begin,'form-control input-md':cemil || event.times.begin}" required placeholder="MM.TT.YYYY" type="text">
                     </div>
+                </div>
 
+                <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.beginDate.$touched">
+                    <div class="text-danger" ng-show="eventForm.beginDate.$error.required">Begin date required</div>
                 </div>
             </div>
 
-            <!-- Prepended text-->
+            <!-- End Date: Prepended text-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="endDate">End Date</label>
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input id="endDate" name="endDate" ng-model="event.time.end" class="form-control" placeholder="End Date" type="text">
+                        <input id="endDate" name="endDate" ng-model="event.times.end" ng-class="{'form-control input-md alert-danger':!cemil && !event.times.end,'form-control input-md':cemil || event.times.end}" required placeholder="MM.TT.YYYY" type="text">
                     </div>
-
+                </div>
+                <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.endDate.$touched">
+                    <div class="text-danger" ng-show="eventForm.endDate.$error.required">End date required</div>
                 </div>
             </div>
 
@@ -56,15 +63,21 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="targetGroup">Target Group</label>
                 <div class="col-md-4">
-                    <input id="targetGroup" name="targetGroup" ng-model="event.targetGroup" placeholder="Target Group" class="form-control input-md" type="text">
+                    <input id="targetGroup" name="targetGroup" ng-model="event.targetGroup" required placeholder="Target Group" ng-class="{'form-control input-md alert-danger':!cemil && !event.targetGroup,'form-control input-md':cemil || event.targetGroup}" type="text">
+                </div>
+                <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.targetGroup.$touched">
+                    <div class="text-danger" ng-show="eventForm.targetGroup.$error.required">Target Group is required</div>
                 </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="contributionDescription">Text Input</label>
+                <label class="col-md-4 control-label" for="contributionDescription">Contribution</label>
                 <div class="col-md-4">
-                    <input id="contributionDescription"  ng-model="event.contributionDescription" name="contributionDescription" placeholder="Contribution Description" class="form-control input-md" type="text">
+                    <input id="contributionDescription"  ng-model="event.contributionDescription" required name="contributionDescription" placeholder="Contribution Description" ng-class="{'form-control input-md alert-danger':!cemil && !event.contributionDescription,'form-control input-md':cemil || event.contributionDescription}" type="text">
+                </div>
+                <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.contributionDescription.$touched">
+                    <div class="text-danger" ng-show="eventForm.contributionDescription.$error.required">Contribution Description can't be omitted</div>
                 </div>
             </div>
 
@@ -76,7 +89,10 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="locationName">Name</label>
                     <div class="col-md-4">
-                        <input id="locationName" name="locationName" ng-model="event.location.name"  placeholder="Location Name" class="form-control input-md" type="text">
+                        <input id="locationName" name="locationName" ng-model="event.location.name" required placeholder="Location Name" ng-class="{'form-control input-md alert-danger':!cemil && !event.location.name,'form-control input-md':cemil || event.location.name}" type="text">
+                    </div>
+                    <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.locationName.$touched">
+                        <div class="text-danger" ng-show="eventForm.locationName.$error.required">Location name is required</div>
                     </div>
                 </div>
 
@@ -84,7 +100,10 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="street">Street</label>
                     <div class="col-md-4">
-                        <input id="street" name="street" placeholder="Street" ng-model="event.location.street"  class="form-control input-md" type="text">
+                        <input id="street" name="street" placeholder="Street" required ng-model="event.location.street"  ng-class="{'form-control input-md alert-danger':!cemil && !event.location.street,'form-control input-md':cemil || event.location.street}" type="text">
+                    </div>
+                    <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.street.$touched">
+                        <div class="text-danger" ng-show="eventForm.street.$error.required">Street is required</div>
                     </div>
                 </div>
 
@@ -92,7 +111,10 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="zipCode">Zip-Code</label>
                     <div class="col-md-4">
-                        <input id="zipCode" name="zipCode" placeholder="Zip-Code" ng-model="event.location.zipCode"  class="form-control input-md" type="text">
+                        <input id="zipCode" name="zipCode" placeholder="Zip-Code" required ng-model="event.location.zipCode"  ng-class="{'form-control input-md alert-danger':!cemil && !event.location.zipCode,'form-control input-md':cemil || event.location.zipCode}" type="text">
+                    </div>
+                    <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.zipCode.$touched">
+                        <div class="text-danger" ng-show="eventForm.zipCode.$error.required">Zip-Code is Required</div>
                     </div>
                 </div>
 
@@ -100,7 +122,10 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="city">City</label>
                     <div class="col-md-4">
-                        <input id="city" name="city" placeholder="City" ng-model="event.location.city"  class="form-control input-md" type="text">
+                        <input id="city" name="city" placeholder="City" ng-model="event.location.city" required ng-class="{'form-control input-md alert-danger':!cemil && !event.location.city,'form-control input-md':cemil || event.location.city}" type="text">
+                    </div>
+                    <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.city.$touched">
+                        <div class="text-danger" ng-show="eventForm.city.$error.required">City is required</div>
                     </div>
                 </div>
 
@@ -108,7 +133,10 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="maximalAmountOfGuests">Max. Guests</label>
                     <div class="col-md-4">
-                        <input id="maximalAmountOfGuests" name="maximalAmountOfGuests" placeholder="Maximal amount of guests" ng-model="event.maximalAmountOfGuests"  class="form-control input-md" type="text">
+                        <input id="maximalAmountOfGuests" name="maximalAmountOfGuests" required placeholder="Maximal amount of guests" ng-model="event.maximalAmountOfGuests"  ng-class="{'form-control input-md alert-danger':!cemil && !event.maximalAmountOfGuests,'form-control input-md':cemil || event.maximalAmountOfGuests}" type="text">
+                    </div>
+                    <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.maximalAmountOfGuests.$touched">
+                        <div class="text-danger" ng-show="eventForm.maximalAmountOfGuests.$error.required">Max. Amount of Guests required</div>
                     </div>
                 </div>
 
@@ -116,13 +144,16 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="description">Description</label>
                     <div class="col-md-4">
-                        <textarea class="form-control" id="description" ng-model="event.description"  name="description">default text</textarea>
+                        <textarea ng-class="{'form-control input-md alert-danger':!cemil && !event.description,'form-control input-md':cemil || event.description}"  id="description" required ng-model="event.description"  name="description">default text</textarea>
+                    </div>
+                    <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.description.$touched">
+                        <div class="text-danger" ng-show="eventForm.description.$error.required">Description is required</div>
                     </div>
                 </div>
 
                 <!-- Textarea -->
                 <div class="form-group">
-                    <button class="btn btn-info btn-lg pull-right" ng-click="saveNewEvent ( event )"> Save </button>
+                    <button class="btn btn-info btn-lg pull-right" ng-click="saveNewEvent ( event, eventForm )"> Save </button>
                     <button class="btn btn-primary btn-lg " ng-click="fillOutForm ( event )"> Fill the form </button>
                 </div>
 

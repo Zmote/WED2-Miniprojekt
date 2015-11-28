@@ -8,8 +8,6 @@ define([], function () {
         .controller("AddPersonToEvent", AddPersonToEvent);
 
     function AddPersonToEvent($scope,$http, EventsService, $routeParams, toaster){
-        //tmp variable for message status div
-        $scope.messageStatus = false;
         var guest = $scope.guest = {};
         guest.name = "";
         guest.contribution = "";
@@ -19,14 +17,14 @@ define([], function () {
         $scope.saveNewGuest = function ( guest ){
             console.log(guest)
             EventsService.saveNewGuest(guest, $routeParams.eventId, function (data){
-                $scope.guest = {};
-                toaster.pop('error',"title", "text");
-                console.log("result of saved guest", data);
-                $scope.messageStatus = true;
-                setTimeout(function(){
-                    $scope.messageStatus = false;
-                    $scope.$apply();
-                },2000)
+                if(data.status == 200){
+                    $scope.guest = {};
+                    toaster.pop('success', "Succesfully added new Guest!");
+                    console.log("result of saved guest", data);
+                }else{
+                    toaster.pop('error',"Couldn't add new Guest!");
+                    console.log("Error: ", data.status + " " + data.statusText);
+                }
             });
         };
 
