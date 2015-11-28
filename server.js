@@ -157,6 +157,25 @@ app.get('/api/events/:id', function(request, response) {
     }
 });
 
+app.post('/api/events/delete/:id', function(request, response) {
+    var event = findEvent(request.params.id);
+
+    if (event) {
+        for(var i = 0; i< events.length; i++ ){
+
+            if(events[i].id == request.params.id ){
+                var index = events.indexOf(events[i]);
+                console.log("serverdan silinince ki event index i  ve event",events[i]);
+                events.splice(index, 1);
+            }
+        }
+
+        response.json(event);
+    } else {
+        response.status(404).send('Event (id '+request.params.id+') not found.')
+    }
+});
+
 app.post('/api/events/:id', function(request, response) {
 	var event = findEvent(request.params.id);
 	if (event) {

@@ -7,7 +7,7 @@ define([], function () {
         .module("lafete")
         .controller("AddPersonToEvent", AddPersonToEvent);
 
-    function AddPersonToEvent($scope,$http, EventsService, $routeParams, toaster){
+    function AddPersonToEvent($scope,$http, EventsService, $routeParams, toaster, $location ){
         //tmp variable for message status div
         $scope.messageStatus = false;
         var guest = $scope.guest = {};
@@ -20,19 +20,17 @@ define([], function () {
             console.log(guest)
             EventsService.saveNewGuest(guest, $routeParams.eventId, function (data){
                 $scope.guest = {};
-                toaster.pop('error',"title", "text");
-                console.log("result of saved guest", data);
-                $scope.messageStatus = true;
-                setTimeout(function(){
-                    $scope.messageStatus = false;
-                    $scope.$apply();
-                },2000)
+                console.log("save new guest",data);
+                $location.path("/eventDetail/"+ $routeParams.eventId);
+                toaster.pop('success',"title", "New guest is saved.");
+
+
             });
         };
 
     }
 
-    AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams","toaster"];
+    AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams","toaster","$location"];
 
 
 
