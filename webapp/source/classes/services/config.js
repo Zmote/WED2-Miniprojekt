@@ -46,8 +46,4 @@ define([], function () {
         //$locationProvider.html5Mode(true);
         // /event/{{selectedEvent.data.id}}/person
     });
-
-
-
-
 });

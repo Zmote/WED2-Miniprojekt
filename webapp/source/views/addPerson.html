@@ -50,8 +50,6 @@
         </fieldset>
     </form>
 
-    <!--Animated message, see how to do with angular animate
-    <div ng-show="messageStatus" class="alert alert-info fade-in">Successfully saved a new Guest!</div>
-    -->
-
+    <div data-ng-model="messageStatus" ng-show="messageStatus" class="alert alert-success animate-show ng-hide center col-md-offset-3">Successfully saved a new Guest!</div>
+     <!-- add negative case -->
 </div>

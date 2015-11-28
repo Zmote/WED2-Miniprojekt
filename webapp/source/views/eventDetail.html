@@ -46,7 +46,7 @@
    <div class="col-sm-12">
    <hr>
        <h4 class="text-info">Gäste</h4>
-       <div class="col-sm-4 border-on-left" ng-repeat="guest in selectedEvent.data.guests">
+       <div class="col-sm-4 border-on-left margin-bottom-10" ng-repeat="guest in selectedEvent.data.guests">
            <div ng-hide="guest.canceled" >
                <h5><strong>{{guest.name}}</strong></h5>
                <div ng-show="guest.comment">Kommentar: {{guest.comment}}</div>

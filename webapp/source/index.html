@@ -6,10 +6,12 @@
 		<title>Lafete</title>
 		<link href="styles/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="styles/main.css" rel="stylesheet">
+        <link href="libraries/AngularJS-Toaster/toaster.css" rel="stylesheet">
 		<script src="./libraries/requirejs/require.js" data-main="./classes/main.js"></script>
 
 	</head>
 	<body>
+            <toaster-container toaster-options="{'position-class': 'toast-bottom-full-width'}"></toaster-container>
             <div data-ng-view class="fade"></div>
 	</body>
 </html>

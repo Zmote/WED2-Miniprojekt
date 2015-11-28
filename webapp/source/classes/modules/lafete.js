@@ -1,10 +1,10 @@
 /**
  * Created by Dogan on 12.11.15.
  */
-define(['angular','ngRoute','angular-animate'  ], function (Angular ,ngRoute , Animate) {
+define(['angular','ngRoute','angular-animate','angular-toast'  ], function (Angular ,ngRoute , Animate, Toaster) {
 
 
-    var Lafete = Angular.module('lafete', ["ngRoute" ,"ngAnimate"]);
+    var Lafete = Angular.module('lafete', ["ngRoute" ,"ngAnimate","toaster"]);
 
     Angular.element(document).ready(function() {
 

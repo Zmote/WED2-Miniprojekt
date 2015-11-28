@@ -12,6 +12,7 @@ require.config({
         'ngRoute': '../libraries/angular-route/angular-route',
         'app': '../classes',
         'event-service' : '../classes/services/eventService',
+        'angular-toast': '../libraries/AngularJS-Toaster/toaster',
         'angular-animate' : '../libraries/angular-animate/angular-animate'
 
     },
@@ -27,7 +28,10 @@ require.config({
         'angular-animate': {
             deps: ['angular']
         },
+        'angular-toast': {
+            deps: ['angular','angular-animate']
 
+        }
     }
 });
 
