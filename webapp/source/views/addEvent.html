@@ -1,0 +1,132 @@
+
+
+<div class="row well">
+    <div class="col-xs-10">
+        <h1 class="text-left margin-left-20">Add Event</h1>
+    </div>
+    <div class="col-xs-2">
+        <a  href="#/events" class="btn btn-info margin-top-20 margin-right-10 pull-right">
+            <i class="glyphicon glyphicon-remove"></i>
+        </a>
+    </div>
+</div>
+
+<div class=".col-md-6 .col-md-offset-3 container center">
+    <form class="form-horizontal">
+
+
+            <!-- Form Name -->
+            <legend>Form </legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="eventName">Event name</label>
+                <div class="col-md-4">
+                    <input id="eventName" name="eventName" ng-model="event.name" placeholder="Event name" class="form-control input-md" type="text">
+                </div>
+            </div>
+
+            <!-- Prepended text-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="beginDate">Begin Date</label>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i> </span>
+                        <input id="beginDate" name="beginDate" ng-model="event.time.begin" class="form-control" placeholder="Begin Date" type="text">
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Prepended text-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="endDate">End Date</label>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input id="endDate" name="endDate" ng-model="event.time.end" class="form-control" placeholder="End Date" type="text">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="targetGroup">Target Group</label>
+                <div class="col-md-4">
+                    <input id="targetGroup" name="targetGroup" ng-model="event.targetGroup" placeholder="Target Group" class="form-control input-md" type="text">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="contributionDescription">Text Input</label>
+                <div class="col-md-4">
+                    <input id="contributionDescription"  ng-model="event.contributionDescription" name="contributionDescription" placeholder="Contribution Description" class="form-control input-md" type="text">
+                </div>
+            </div>
+
+            <fieldset>
+                <legend>Location</legend>
+
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="locationName">Name</label>
+                    <div class="col-md-4">
+                        <input id="locationName" name="locationName" ng-model="event.location.name"  placeholder="Location Name" class="form-control input-md" type="text">
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="street">Street</label>
+                    <div class="col-md-4">
+                        <input id="street" name="street" placeholder="Street" ng-model="event.location.street"  class="form-control input-md" type="text">
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="zipCode">Zip-Code</label>
+                    <div class="col-md-4">
+                        <input id="zipCode" name="zipCode" placeholder="Zip-Code" ng-model="event.location.zipCode"  class="form-control input-md" type="text">
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="city">City</label>
+                    <div class="col-md-4">
+                        <input id="city" name="city" placeholder="City" ng-model="event.location.city"  class="form-control input-md" type="text">
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="maximalAmountOfGuests">Max. Guests</label>
+                    <div class="col-md-4">
+                        <input id="maximalAmountOfGuests" name="maximalAmountOfGuests" placeholder="Maximal amount of guests" ng-model="event.maximalAmountOfGuests"  class="form-control input-md" type="text">
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="description">Description</label>
+                    <div class="col-md-4">
+                        <textarea class="form-control" id="description" ng-model="event.description"  name="description">default text</textarea>
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <button class="btn btn-info btn-lg pull-right" ng-click="saveNewEvent ( event )"> Save </button>
+                    <button class="btn btn-primary btn-lg " ng-click="fillOutForm ( event )"> Fill the form </button>
+                </div>
+
+             </fieldset>
+    </form>
+
+</div>

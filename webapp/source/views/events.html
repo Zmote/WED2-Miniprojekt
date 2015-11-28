@@ -1,22 +1,32 @@
-<div class="text-center">
-    <div class="btn-group lead">
-        <label class="media-middle">Events</label>
-        <button class="media-middle">+</button>
+<div class="row well">
+    <div class="col-xs-10">
+        <h1 class="text-left margin-left-20">Events</h1>
+    </div>
+    <div class="col-xs-2">
+        <a href="#/addEvents" class="btn btn-info margin-top-20 margin-right-10 pull-right">
+            <i class="glyphicon glyphicon-plus"></i>
+        </a>
     </div>
 </div>
 
-<div class="col-sm-12">
+<div class=".col-md-6 .col-md-offset-3 container center">
     <div>
-        <div class="lead text-center">
-             <div class="nav-tabs" data-ng-repeat="event in events">
-                 <strong>{{event.name}}</strong>
+        <div>
+             <div data-ng-repeat="event in events">
+                 <h3 class="text-info"><strong>{{event.name}}</strong></h3>
                  <div>{{event.description}}</div>
-                 <div><strong>Where?:</strong></div>
+                 <h4 class="text-info">Where?:</h4>
                  <div>{{event.location.name}}, {{event.location.street}},
                      {{event.location.plz}}, {{event.location.city}}
                  </div>
-                 <div><strong>Guests:</strong></div>
-                 <div data-ng-repeat="guest in event.guests">{{guest.id}}, {{guest.name}}, {{guest.contribution}}, {{guest.comment}}, {{guest.canceled}}</div>
+                 <div><h4 class="text-info">Guests:</h4></div>
+                 <span class="border-on-left margin-right-5 padding-left-5" data-ng-repeat="guest in event.guests">{{guest.name}}</span>
+                <a href="#/eventDetail/{{event.id}}">
+                    <button class="btn btn-info">
+                        <i class="glyphicon glyphicon-arrow-right"></i>
+                    </button>
+                </a>
+                 <hr>
              </div>
          </div>
     </div>
