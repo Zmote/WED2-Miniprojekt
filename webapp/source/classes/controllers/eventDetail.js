@@ -23,10 +23,10 @@ define(['moment'], function (moment) {
                 $scope.selectedEvent.isEditable = true;
                 $scope.checkRegisteredUsers($scope.selectedEvent);
                 $scope.$watch('selectedEvent.times.begin', function (newValue) {
-                    $scope.selectedEvent.times.begin = $filter('date')(newValue, 'dd/MM/yyyy');
+                    $scope.selectedEvent.times.begin = $filter('date')(newValue, 'dd.MM.yyyy');
                 });
                 $scope.$watch('selectedEvent.times.end', function (newValue) {
-                    $scope.selectedEvent.times.end = $filter('date')(newValue, 'dd/MM/yyyy');
+                    $scope.selectedEvent.times.end = $filter('date')(newValue, 'dd.MM.yyyy');
                 });
             });
 
@@ -76,13 +76,13 @@ define(['moment'], function (moment) {
         };
 
         $scope.updateEvent = function (event){
-            if(new Date(moment(event.times.begin,"MM/DD/YYYY")).getTime() > new Date(moment(event.times.end,"MM/DD/YYYY")).getTime()){
+            if(moment(event.times.begin,"DD.MM.YYYY").toDate().getTime() > moment(event.times.end,"DD.MM.YYYY").toDate().getTime()){
                 toaster.pop("error","End time can't be before Begin Time");
                 return;
             }
             var zafer = angular.copy(event);
-            zafer.times.begin = new Date(moment(event.times.begin,"MM/DD/YYYY")).getTime();
-            zafer.times.end=new Date(moment(event.times.end,"MM/DD/YYYY")).getTime();
+            zafer.times.begin = moment(event.times.begin,"DD.MM.YYYY").toDate().getTime();
+            zafer.times.end= moment(event.times.end,"DD.MM.YYYY").toDate().getTime();
 
             EventsService.updateEvent(zafer, function (data){
                 $scope.getEventDetails(event._id);

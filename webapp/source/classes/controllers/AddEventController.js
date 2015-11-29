@@ -40,23 +40,18 @@ define(['moment'], function (moment) {
                          return;
                      }
 
-                     if(new Date(moment(event.times.begin,"MM/DD/YYYY")).getTime() > new Date(moment(event.times.end,"MM/DD/YYYY")).getTime()){
+                     if(moment(event.times.begin,"DD.MM.YYYY").toDate().getTime() > moment(event.times.end,"DD.MM.YYYY").toDate().getTime()){
                          toaster.pop("error","End time can't be before Begin Time");
                          return;
                      }
                      var zafer = angular.copy(event);
-                     zafer.times.begin = new Date($scope.reorderDateInput(event.times.begin)).getTime();
-                     zafer.times.end = new Date($scope.reorderDateInput(event.times.end)).getTime();
+                     zafer.times.begin = moment(event.times.begin,"DD.MM.YYYY").toDate().getTime();
+                     zafer.times.end = moment(event.times.end,"DD.MM.YYYY").toDate().getTime();
                      EventsService.saveNewEvent(zafer, function (data){
                          console.log("result of saved event", data);
                          $location.path('#/events');
                      });
                  }
-             };
-
-             $scope.reorderDateInput = function(date){
-                 //TODO: see if proper ordering
-                 return  moment(date,"MM/DD/YYYY");
              };
 
              $scope.fillOutForm = function(event){
@@ -81,7 +76,7 @@ define(['moment'], function (moment) {
              };
 
              function testDate(str){
-                 return moment( str, ["dd/MM/yyyy"]).isValid();
+                 return moment( str, ["dd.MM.yyyy"]).isValid();
              }
 
 

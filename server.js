@@ -18,13 +18,13 @@ var allowCrossDomain = function(request, response, next) {
  * Event / guest storage
  */
 
-function createEvent(id, name, description, targetGroup, contributionsDescription, location, times,maximalAmountOfGuests, call){
+function createEvent(id, name, description, targetGroup, contributionDescription, location, times,maximalAmountOfGuests, call){
     if(name) {
         var event = {
             name : name,
             description : description,
             targetGroup: targetGroup,
-            contributionsDescription: contributionsDescription,
+            contributionDescription: contributionDescription,
             location:location,
             times : times,
             maximalAmountOfGuests:maximalAmountOfGuests,
@@ -107,12 +107,13 @@ app.get('/api/events', function(request, response) {
 });
 
 app.post('/api/events', function(request, response) {
+    console.log(request.body);
     createEvent(
        request.body.id,
        request.body.name,
        request.body.description,
        request.body.targetGroup,
-       request.body.contributionsDescription,
+       request.body.contributionDescription,
        request.body.location,
        request.body.times,
        request.body.maximalAmountOfGuests,
@@ -137,6 +138,7 @@ app.get('/api/events/:id', function(request, response) {
 });
 
 app.post('/api/events/:id', function(request, response) {
+    console.log(request.params);
 	findEvent(request.params.id, function(event){
         if (event) {
             if(request.body.name && request.body.name != event.name) {
@@ -148,8 +150,8 @@ app.post('/api/events/:id', function(request, response) {
             if(request.body.targetGroup && event.targetGroup != request.body.targetGroup) {
                 event.targetGroup = request.body.targetGroup;
             }
-            if(request.body.contributionsDescription && event.contributionsDescription != request.body.contributionsDescription) {
-                event.contributionsDescription = request.body.contributionsDescription;
+            if(request.body.contributionDescription && event.contributionDescription != request.body.contributionDescription) {
+                event.contributionDescription = request.body.contributionDescription;
             }
             if(request.body.location && event.location != request.body.location) {
                 event.location = request.body.location;
@@ -160,11 +162,12 @@ app.post('/api/events/:id', function(request, response) {
             if(request.body.maximalAmountOfGuests && event.maximalAmountOfGuests != request.body.maximalAmountOfGuests) {
                 event.maximalAmountOfGuests = request.body.maximalAmountOfGuests;
             }
+            console.log(event);
             db.update({_id:request.params.id},{
                 name:event.name,
                 description:event.description,
                 targetGroup:event.targetGroup,
-                contributionsDescription:event.contributionsDescription,
+                contributionDescription:event.contributionDescription,
                 location:event.location,
                 times:event.times,
                 maximalAmountOfGuests:event.maximalAmountOfGuests,
