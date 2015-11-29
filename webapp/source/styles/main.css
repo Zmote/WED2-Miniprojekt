@@ -143,9 +143,41 @@
 }
 
 .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
-    transition: all linear 0.5s;
+    transition: all linear 0.2s;
 }
 
 .animate-show.ng-hide {
     opacity: 0;
 }
+
+
+/* CSS used here will be applied after bootstrap.css */
+.guest {
+    position: relative;
+}
+
+.hover-btn {
+    position: absolute;
+    right: 15px;
+    display: none;
+}
+
+.guest:hover .hover-btn {
+    display: block;
+}
+
+.event-detail{
+     background-color: #ffffff;
+ }
+
+.event-detail:hover{
+    background-color: #efefef;
+}
+
+
+
+
+
+
+
+

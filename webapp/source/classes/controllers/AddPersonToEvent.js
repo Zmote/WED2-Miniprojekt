@@ -7,7 +7,9 @@ define([], function () {
         .module("lafete")
         .controller("AddPersonToEvent", AddPersonToEvent);
 
-    function AddPersonToEvent($scope,$http, EventsService, $routeParams, toaster){
+
+    function AddPersonToEvent($scope,$http, EventsService, $routeParams, toaster,$location){
+
         var guest = $scope.guest = {};
         guest.name = "";
         guest.contribution = "";
@@ -15,22 +17,25 @@ define([], function () {
         guest.canceled = false;
 
         $scope.saveNewGuest = function ( guest ){
-            console.log(guest)
+
             EventsService.saveNewGuest(guest, $routeParams.eventId, function (data){
+
                 if(data.status == 200){
                     $scope.guest = {};
                     toaster.pop('success', "Succesfully added new Guest!");
-                    console.log("result of saved guest", data);
+                    $location.path("/eventDetail/"+ $routeParams.eventId);
+
                 }else{
                     toaster.pop('error',"Couldn't add new Guest!");
                     console.log("Error: ", data.status + " " + data.statusText);
                 }
+
             });
         };
 
     }
 
-    AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams","toaster"];
+    AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams","toaster","$location"];
 
 
 

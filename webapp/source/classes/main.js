@@ -13,7 +13,8 @@ require.config({
         'app': '../classes',
         'event-service' : '../classes/services/eventService',
         'angular-toast': '../libraries/AngularJS-Toaster/toaster',
-        'angular-animate' : '../libraries/angular-animate/angular-animate'
+        'angular-animate' : '../libraries/angular-animate/angular-animate',
+        'moment' : '../libraries/moment/moment'
 
     },
     // angular does not support async loading out of the box -> use the shim loader

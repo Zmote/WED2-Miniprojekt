@@ -19,6 +19,12 @@ define([], function () {
 
 
             })
+            .when('/eventGuests/:id', {
+                templateUrl: './views/eventGuests.html',
+                controller: 'EventGuestsController'
+
+
+            })
             .when('/eventDetail/:id', {
                 templateUrl: './views/eventDetail.html',
                 controller: 'EventDetail',

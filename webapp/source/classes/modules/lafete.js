@@ -1,7 +1,7 @@
 /**
  * Created by Dogan on 12.11.15.
  */
-define(['angular','ngRoute','angular-animate','angular-toast'  ], function (Angular ,ngRoute , Animate, Toaster) {
+define(['angular','ngRoute','angular-animate','angular-toast' ,'moment' ], function (Angular ,ngRoute , Animate, Toaster,moment) {
 
 
     var Lafete = Angular.module('lafete', ["ngRoute" ,"ngAnimate","toaster"]);

@@ -22,6 +22,18 @@ define([], function () {
                         $http.post("/api/events/"+ eventID+"/guests", guest).then(function (data) {
                             call(data);
                         });
+                    },
+                    updateEvent : function (event, call){
+                        $http.post("/api/events/"+event.id , event).then(function (data) {
+                            call(data);
+                        });
+
+                    },
+                    deleteEvent : function (event, call){
+
+                        $http.post('/api/events/delete/'+event.id ).then(function (data) {
+                            call(data);
+                        });
                     }
                 }
 

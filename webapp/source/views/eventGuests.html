@@ -1,0 +1,39 @@
+
+
+<div class="row well">
+    <div class="col-xs-10">
+        <h1 class="text-left margin-left-20">Event Guests</h1>
+    </div>
+    <div class="col-xs-2">
+        <a  href="#/eventDetail/{{selectedEvent._id}}" class="btn btn-info margin-top-20 margin-right-10 pull-right">
+            <i class="glyphicon glyphicon-remove"></i>
+        </a>
+    </div>
+</div>
+
+<div class=".col-md-6 .col-md-offset-3 container center">
+    <div class="col-sm-6">
+        <hr>
+        <div class="col-sm-12">
+            <h4 class="text-info">Gäste</h4>
+        </div>
+        <div  ng-if="guest.name"
+              class="col-sm-12 "
+              ng-repeat="guest in selectedEvent.guests">
+            <div  ng-class="{'bs-callout bs-callout-info': !guest.canceled,'bs-callout bs-callout-danger': guest.canceled }">
+
+                <div>
+                    <h5><strong>{{guest.name}}</strong></h5>
+                    <div ng-show="guest.comment">Kommentar: {{guest.comment}}</div>
+                    <div ng-show="guest.contribution">Beitrag: {{guest.contribution}}</div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- add negative case -->
+</div>

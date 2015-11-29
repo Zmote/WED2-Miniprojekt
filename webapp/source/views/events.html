@@ -20,7 +20,9 @@
                      {{event.location.plz}}, {{event.location.city}}
                  </div>
                  <div><h4 class="text-info">Guests:</h4></div>
-                 <span class="border-on-left margin-right-5 padding-left-5" data-ng-repeat="guest in event.guests">{{guest.name}}</span>
+
+                 <span class="border-on-left margin-right-5 padding-left-5" ng-hide="guest.canceled"  data-ng-repeat="guest in event.guests">{{guest.name}}</span>
+
                 <a href="#/eventDetail/{{event._id}}">
                     <button class="btn btn-info">
                         <i class="glyphicon glyphicon-arrow-right"></i>

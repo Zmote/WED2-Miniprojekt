@@ -40,6 +40,7 @@ function createEvent(id, name, description, targetGroup, contributionsDescriptio
         });
     }else{
         call(null);
+
     }
 }
 
@@ -57,10 +58,11 @@ function createGuest(event, id, name, contribution, comment, call){
     if(event && event.guests) {
         var guest = {
             id: id ? id : guestId++,
+
             name : name,
             contribution: contribution,
             comment: comment,
-			canceled: false
+            canceled: false
         };
         db.update({_id:event._id},{$push: {guests:guest}},function(err,doc){
             if(err){
@@ -101,6 +103,7 @@ app.use('/source', express.static(__dirname + '/webapp/source'));
  * API routes
  */
 app.get('/api/events', function(request, response) {
+
     response.json({ events: db.getAllData()});
 });
 
@@ -132,6 +135,7 @@ app.get('/api/events/:id', function(request, response) {
         }
     });
 
+<<<<<<< HEAD
 });
 
 app.post('/api/events/:id', function(request, response) {
@@ -243,3 +247,16 @@ app.post('/api/events/:eventId/guests/:guestId', function(request, response) {
 var appPort = 8080;
 app.listen(appPort);
 console.log('Server running on port '+appPort);
+
+
+
+
+
+
+
+
+
+
+
+
+
