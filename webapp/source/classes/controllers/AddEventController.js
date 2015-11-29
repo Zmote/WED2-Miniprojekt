@@ -45,7 +45,7 @@ define([], function () {
                      var zafer = angular.copy(event);
                      zafer.times.begin = new Date(event.times.begin);
                      zafer.times.end = new Date(event.times.end);
-                     EventsService.saveNewEvent(event, function (data){
+                     EventsService.saveNewEvent(zafer, function (data){
                          console.log("result of saved event", data);
                          $location.path('#/events');
                      });

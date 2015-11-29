@@ -12,6 +12,5 @@ define (function(){
         'classes/controllers/AddEventController',
         'classes/controllers/EventController',
         'classes/services/config'
-
     ]
 });
