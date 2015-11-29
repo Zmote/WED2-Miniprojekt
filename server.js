@@ -18,7 +18,7 @@ var allowCrossDomain = function(request, response, next) {
  * Event / guest storage
  */
 
-function createEvent(id, name, description, targetGroup, contributionsDescription, location, times, call){
+function createEvent(id, name, description, targetGroup, contributionsDescription, location, times,maximalAmountOfGuests, call){
     if(name) {
         var event = {
             name : name,
@@ -27,6 +27,7 @@ function createEvent(id, name, description, targetGroup, contributionsDescriptio
             contributionsDescription: contributionsDescription,
             location:location,
             times : times,
+            maximalAmountOfGuests:maximalAmountOfGuests,
             guests:[]
         };
 
@@ -114,6 +115,7 @@ app.post('/api/events', function(request, response) {
        request.body.contributionsDescription,
        request.body.location,
        request.body.times,
+       request.body.maximalAmountOfGuests,
         function(event){
             if(event) {
                 response.json(event);

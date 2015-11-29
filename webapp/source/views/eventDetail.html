@@ -26,7 +26,7 @@
           </div>
           <div class="col-sm-12">
               <a class="btn btn-info" href="#eventGuests/{{selectedEvent._id}}">
-                  Guests : {{selectedEvent.guests.length}}
+                  Guests : {{registeredUsers.length}}
               </a>
               <a type="button pull-right" ng-click="changeEditableStatus(selectedEvent)" class="btn btn-success  " >
                   <i class="glyphicon glyphicon-edit"></i>
@@ -131,14 +131,20 @@
 
    </div>
 
-
+  <div class="col-md-12">
+   <hr>
    <div class="col-sm-12">
-       <hr>
-       <div class="col-sm-12">
-           <h4 class="text-info">Gäste</h4>
-       </div>
+       <h4 class="text-info col-sm-8">Gäste</h4>
+   </div>
+      <div class="col-sm-12 pull-right">
+          <div  ng-click="addGuest(selectedEvent)" class="btn btn-info margin-top-20 margin-right-20 pull-right">
+
+              <i class="glyphicon glyphicon-plus"></i>
+              Add Guests
+          </div>
+      </div>
        <div  ng-if="guest.name"
-             class="col-sm-5  guest"
+             class="col-md-4 guest"
              ng-repeat="guest in selectedEvent.guests">
            <div ng-hide="guest.canceled" class="bs-callout bs-callout-info">
                <div class="hover-btn col-sm-4 pull-right margin-bottom-20" ng-init="guest.isEditable = true">
@@ -171,15 +177,6 @@
 
             </div>
        </div>
-
-    <div class="col-xs-2 pull-right">
-     <a  href="#/event/{{selectedEvent._id}}/person" class="btn btn-info margin-top-20 margin-right-20 pull-right">
-
-      <i class="glyphicon glyphicon-plus"></i>
-         Add Guests
-     </a>
-    </div>
-
    </div>
 
  </div>

@@ -33,12 +33,15 @@ define(['moment'], function (moment) {
                  if(formValidity.$valid){
                      if(!testDate(event.times.begin)){
                          toaster.pop("error","Begin Date wrong, please check input Format, needs to be dd.mm.yyyy");
-
                          return;
                      }
                      if(!testDate(event.times.end)){
                          toaster.pop("error","End Date wrong, please check input Format, needs to be dd.mm.yyyy");
+                         return;
+                     }
 
+                     if(new Date(moment(event.times.begin,"MM/DD/YYYY")).getTime() > new Date(moment(event.times.end,"MM/DD/YYYY")).getTime()){
+                         toaster.pop("error","End time can't be before Begin Time");
                          return;
                      }
                      var zafer = angular.copy(event);
