@@ -63,7 +63,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="targetGroup">Target Group</label>
                 <div class="col-md-4">
-                    <input id="targetGroup" name="targetGroup" ng-model="event.targetGroup" required placeholder="Target Group" ng-class="{'form-control input-md alert-danger':!cemil && !event.targetGroup,'form-control input-md':cemil || event.targetGroup}" type="number">
+                    <input id="targetGroup" name="targetGroup" ng-model="event.targetGroup" required placeholder="Target Group" ng-class="{'form-control input-md alert-danger':!cemil && !event.targetGroup,'form-control input-md':cemil || event.targetGroup}" type="text">
                 </div>
                 <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.targetGroup.$touched">
                     <div class="text-danger" ng-show="eventForm.targetGroup.$error.required">Target Group is required</div>
