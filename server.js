@@ -4,8 +4,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Datastore = require('nedb');
+var shortid = require('shortid');
 db = new Datastore({ filename: './database/datastore', autoload: true });
-
 var allowCrossDomain = function(request, response, next) {
     response.header('Access-Control-Allow-Origin', '*');
     response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -17,8 +17,6 @@ var allowCrossDomain = function(request, response, next) {
 /**
  * Event / guest storage
  */
-
-var guestId = 0;
 
 function createEvent(id, name, description, targetGroup, contributionsDescription, location, times, call){
     if(name) {
@@ -57,8 +55,7 @@ function findEvent(id, call) {
 function createGuest(event, id, name, contribution, comment, call){
     if(event && event.guests) {
         var guest = {
-            id: id ? id : guestId++,
-
+            id: shortid.generate(),
             name : name,
             contribution: contribution,
             comment: comment,
@@ -103,8 +100,9 @@ app.use('/source', express.static(__dirname + '/webapp/source'));
  * API routes
  */
 app.get('/api/events', function(request, response) {
-
-    response.json({ events: db.getAllData()});
+    db.find({}).sort({times: -1}).exec(function(err,data){
+        response.json({ events: data});
+    });
 });
 
 app.post('/api/events', function(request, response) {
@@ -134,8 +132,6 @@ app.get('/api/events/:id', function(request, response) {
             response.status(404).send('Event (id '+request.params.id+') not found.')
         }
     });
-
-<<<<<<< HEAD
 });
 
 app.post('/api/events/:id', function(request, response) {
@@ -159,7 +155,17 @@ app.post('/api/events/:id', function(request, response) {
             if(request.body.times && event.times != request.body.times) {
                 event.times = request.body.times;
             }
-            response.json(event);
+            db.update({_id:request.params.id},{
+                name:event.name,
+                description:event.description,
+                targetGroup:event.targetGroup,
+                contributionsDescription:event.contributionsDescription,
+                location:event.location,
+                times:event.times},
+                function(err,data){
+                response.json(event);
+            });
+
         } else {
             response.status(404).send('Event (id '+request.params.id+') not found.')
         }
@@ -177,12 +183,30 @@ app.get('/api/events/:id/guests', function(request, response) {
     });
 });
 
+app.post('/api/events/delete/:id', function(request, response) {
+    findEvent(request.params.id,function(event){
+        if (event){
+                db.remove({_id:request.params.id},function(err,doc){
+                    if(err){
+                        console.log("Something went wrong while deleting entry");
+                        response.status(404).send("Event (id " + request.params.id + ") couldn't be removed!");
+                        return;
+                    }
+                    response.json(event);
+                });
+            }else{
+            response.status(404).send('Event (id '+request.params.id+') not found.')
+        }
+    });
+
+});
+
 app.post('/api/events/:id/guests', function(request, response) {
     findEvent(request.params.id,function(event){
         if(event){
             createGuest(
                 event,
-                request.body.id,
+                null,
                 request.body.name,
                 request.body.contribution,
                 request.body.comment,
@@ -230,7 +254,24 @@ app.post('/api/events/:eventId/guests/:guestId', function(request, response) {
                         guest.canceled = request.body.canceled;
                     }
 
-                    response.json(guest);
+                    var index;
+                    for(var i=0; i< event.guests.length; i++){
+                        if(event.guests[i].id == guest.id){
+                            var index = i;
+                        }
+                    }
+                    event.guests.splice(index,1);
+                    event.guests.push(guest);
+
+                    db.update({_id:event._id},{$set:{guests:event.guests}},function(err,doc){
+                        if(err){
+                            console.log("Something went wrong with updating the Guest");
+                            return;
+                        }
+                        findGuest(event,guest.id,function(err,guest){
+                            response.json(guest);
+                        });
+                    });
                 } else {
                     response.status(404).send('Guest (id '+request.params.guestId+') not found.')
                 }

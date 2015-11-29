@@ -6,9 +6,9 @@ define(['moment'], function (moment) {
 
 
          function AddEventController($scope,$http, EventsService,toaster,$location){
-             var formValidity = false;
+             //var formValidity = false;
              $scope.cemil = true;
-             $scope.dateStatus = false;
+             //$scope.dateStatus = false;
              var event = $scope.event = {};
              event.contributionDescription = "";
              event.description =  "";
@@ -42,8 +42,8 @@ define(['moment'], function (moment) {
                          return;
                      }
                      var zafer = angular.copy(event);
-                     zafer.times.begin = new Date(event.times.begin);
-                     zafer.times.end = new Date(event.times.end);
+                     zafer.times.begin = new Date($scope.reorderDateInput(event.times.begin)).getTime();
+                     zafer.times.end = new Date($scope.reorderDateInput(event.times.end)).getTime();
                      EventsService.saveNewEvent(zafer, function (data){
                          console.log("result of saved event", data);
                          $location.path('#/events');
@@ -51,6 +51,9 @@ define(['moment'], function (moment) {
                  }
              };
 
+             $scope.reorderDateInput = function(date){
+                 return  moment(date,"MM/DD/YYYY");
+             };
 
              $scope.fillOutForm = function(event){
 
@@ -74,8 +77,7 @@ define(['moment'], function (moment) {
              };
 
              function testDate(str){
-
-                 return moment( str, ["dd.MM.yyyy"]).isValid();
+                 return moment( str, ["dd/MM/yyyy"]).isValid();
              }
 
 
@@ -94,7 +96,7 @@ define(['moment'], function (moment) {
                  if(type == "date"){
                      return val.split('').map(function(char, i){
                          if(char == "-")
-                           return ".";
+                           return "/";
 
                          if(char == "d")
                              return Math.floor(Math.random()* 30 + 1);
