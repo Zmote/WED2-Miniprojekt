@@ -1,4 +1,5 @@
-define([], function () {
+define(['moment'], function (moment) {
+
      angular
          .module("lafete")
          .controller("AddEventController", AddEventController);
@@ -31,15 +32,13 @@ define([], function () {
                  }
                  if(formValidity.$valid){
                      if(!testDate(event.times.begin)){
-                         toaster.pop("error","Begin Date wrong, please check input Format, needs to be MM/DD/YYYY");
-                         event.times.begin = "";
-                         event.times.end = "";
+                         toaster.pop("error","Begin Date wrong, please check input Format, needs to be dd.mm.yyyy");
+
                          return;
                      }
                      if(!testDate(event.times.end)){
-                         toaster.pop("error","End Date wrong, please check input Format, needs to be MM/DD/YYYY");
-                         event.times.begin = "";
-                         event.times.end = "";
+                         toaster.pop("error","End Date wrong, please check input Format, needs to be dd.mm.yyyy");
+
                          return;
                      }
                      var zafer = angular.copy(event);
@@ -55,48 +54,69 @@ define([], function () {
 
              $scope.fillOutForm = function(event){
 
-                 event.contributionDescription = $scope.genereteInput();
-                 event.description =  $scope.genereteInput();
+                 event.contributionDescription = $scope.genereteInput("string");
+                 event.description =  $scope.genereteInput("string");
                  event.location = {
-                     city :  $scope.genereteInput(),
-                     name :  $scope.genereteInput(),
-                     street :  $scope.genereteInput(),
-                     zipCode :  $scope.genereteInput()
+                     city :  $scope.genereteInput("string"),
+                     name :  $scope.genereteInput("string"),
+                     street :  $scope.genereteInput("string"),
+                     zipCode :  $scope.genereteInput("string")
                  };
-                 event.maximalAmountOfGuests = $scope.genereteInput();
-                 event.name = $scope.genereteInput();
-                 event.targetGroup = $scope.genereteInput();
+                 event.maximalAmountOfGuests = $scope.genereteInput("string");
+                 event.name = $scope.genereteInput("string");
+                 event.targetGroup = $scope.genereteInput("string");
                  event.times =
                  {
-                    begin: $scope.genereteInput(),
-                    end :  $scope.genereteInput()
+                    begin: $scope.genereteInput("date"),
+                    end :  $scope.genereteInput("date")
                  }
 
              };
 
              function testDate(str){
-                 var t = str.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-                 if(t===null)
-                     return false;
-                 var d=+t[1], m=+t[2], y=+t[3];
-                 //below should be more acurate algorithm
-                 if(m>=1 && m<=12 && d>=1 && d<=31){
-                     return true;
-                 }
-                 return false;
+
+                 return moment( str, ["dd.MM.yyyy"]).isValid();
              }
 
 
-             $scope.genereteInput = function (){
-                 var val = "XXX-XXX-XXX";
-                 return val.split('').map(function(char, i){
+             $scope.genereteInput = function (type){
+                 var val = "d-m-fyyy";
 
-                     var random = Math.floor(Math.random()* 57 +65);
-                     return String.fromCharCode(random);
-                 }).join("");
+                 if(type == "string"){
+                     return val.split('').map(function(char, i){
+
+                         var random = Math.floor(Math.random()* 57 +65);
+                         return String.fromCharCode(random);
+                     }).join("");
+
+                 }
+
+                 if(type == "date"){
+                     return val.split('').map(function(char, i){
+                         if(char == "-")
+                           return ".";
+
+                         if(char == "d")
+                             return Math.floor(Math.random()* 30 + 1);
+                         if(char == "m")
+                             return Math.floor(Math.random()* 11 + 1);
+                         if(char == "f")
+                             return Math.floor(Math.random()* 1 + 1 );
+                         if(char == "y")
+                             return Math.floor(Math.random()* 8 );
+
+                     }).join("");
+
+                 }
+
+
+
              }
 
          }
 
          AddEventController.$inject =  ["$scope", "$http", "EventsService","toaster","$location"];
+
+
+
 });

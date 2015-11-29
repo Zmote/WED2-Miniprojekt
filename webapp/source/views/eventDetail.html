@@ -25,7 +25,7 @@
 
           </div>
           <div class="col-sm-12">
-              <a class="btn btn-info" href="#eventGuests/{{selectedEvent.id}}">
+              <a class="btn btn-info" href="#eventGuests/{{selectedEvent._id}}">
                   Guests : {{selectedEvent.guests.length}}
               </a>
               <a type="button pull-right" ng-click="changeEditableStatus(selectedEvent)" class="btn btn-success  " >
@@ -173,7 +173,7 @@
        </div>
 
     <div class="col-xs-2 pull-right">
-     <a  href="#/event/{{selectedEvent.id}}/person" class="btn btn-info margin-top-20 margin-right-20 pull-right">
+     <a  href="#/event/{{selectedEvent._id}}/person" class="btn btn-info margin-top-20 margin-right-20 pull-right">
       <i class="glyphicon glyphicon-plus"></i>
          Add Guests
      </a>
