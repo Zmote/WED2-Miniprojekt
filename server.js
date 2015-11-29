@@ -157,13 +157,18 @@ app.post('/api/events/:id', function(request, response) {
             if(request.body.times && event.times != request.body.times) {
                 event.times = request.body.times;
             }
+            if(request.body.maximalAmountOfGuests && event.maximalAmountOfGuests != request.body.maximalAmountOfGuests) {
+                event.maximalAmountOfGuests = request.body.maximalAmountOfGuests;
+            }
             db.update({_id:request.params.id},{
                 name:event.name,
                 description:event.description,
                 targetGroup:event.targetGroup,
                 contributionsDescription:event.contributionsDescription,
                 location:event.location,
-                times:event.times},
+                times:event.times,
+                maximalAmountOfGuests:event.maximalAmountOfGuests,
+                guests:event.guests},
                 function(err,data){
                 response.json(event);
             });

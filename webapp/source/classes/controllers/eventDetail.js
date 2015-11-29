@@ -80,10 +80,11 @@ define(['moment'], function (moment) {
                 toaster.pop("error","End time can't be before Begin Time");
                 return;
             }
-            event.times.begin = new Date(moment(event.times.begin,"MM/DD/YYYY")).getTime();
-            event.times.end = new Date(moment(event.times.end,"MM/DD/YYYY")).getTime();
+            var zafer = angular.copy(event);
+            zafer.times.begin = new Date(moment(event.times.begin,"MM/DD/YYYY")).getTime();
+            zafer.times.end=new Date(moment(event.times.end,"MM/DD/YYYY")).getTime();
 
-            EventsService.updateEvent(event, function (data){
+            EventsService.updateEvent(zafer, function (data){
                 $scope.getEventDetails(event._id);
             });
         }

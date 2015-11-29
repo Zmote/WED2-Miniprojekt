@@ -55,6 +55,7 @@ define(['moment'], function (moment) {
              };
 
              $scope.reorderDateInput = function(date){
+                 //TODO: see if proper ordering
                  return  moment(date,"MM/DD/YYYY");
              };
 
