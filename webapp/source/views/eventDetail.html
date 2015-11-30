@@ -136,18 +136,18 @@
 
    </div>
 
-  <div class="col-md-12">
-   <hr>
-   <div class="col-sm-12">
-       <h4 class="text-info col-sm-8">Gäste</h4>
-   </div>
-      <div class="col-sm-12 pull-right">
-          <div  ng-click="addGuest(selectedEvent)" class="btn btn-info margin-top-20 margin-right-20 pull-right">
 
+  <div class="col-xs-12">
+      <h4 class="text-info col-xs-4">Gäste</h4>
+      <div class="col-md-4 pull-right">
+          <div  ng-click="addGuest(selectedEvent)" class="btn btn-info pull-right">
               <i class="glyphicon glyphicon-plus"></i>
               Add Guests
           </div>
       </div>
+  </div>
+  <div class="col-md-12">
+      <hr>
        <div  ng-if="guest.name"
              class="col-md-4 guest"
              ng-repeat="guest in selectedEvent.guests">
