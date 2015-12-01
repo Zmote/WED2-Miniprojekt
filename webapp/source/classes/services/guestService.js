@@ -2,11 +2,7 @@
  * Created by Dogan on 23.11.15.
  */
 define([], function () {
-
-    return angular
-            .module("lafete")
-            .factory("GuestService", function($http){
-
+    var GuestService = function($http){
                 return {
 
                     saveNewGuest: function (guest,eventID, call) {
@@ -20,9 +16,6 @@ define([], function () {
                         });
                     }
                 }
-
-
-
-
-        });
+        }
+    return GuestService;
 });

@@ -1,11 +1,6 @@
 define(['moment'], function (moment) {
 
-     angular
-         .module("lafete")
-         .controller("AddEventController", AddEventController);
-
-
-         function AddEventController($scope,$http, EventsService,toaster,$location){
+         var AddEventController = function($scope,$http, EventsService,toaster,$location){
              //var formValidity = false;
              $scope.cemil = true;
              //$scope.dateStatus = false;
@@ -116,8 +111,6 @@ define(['moment'], function (moment) {
 
          }
 
-         AddEventController.$inject =  ["$scope", "$http", "EventsService","toaster","$location"];
-
-
+    return AddEventController;
 
 });

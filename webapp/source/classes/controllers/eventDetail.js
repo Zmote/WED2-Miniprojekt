@@ -3,18 +3,12 @@
  */
 define(['moment'], function (moment) {
 
-    angular
-        .module("lafete")
-        .controller("EventDetail", EventDetail);
-
-    function EventDetail($scope,$http, EventsService, $routeParams,GuestService, $location,$filter,toaster){
+    var EventDetail = function($scope,$http, EventsService, $routeParams,GuestService, $location,$filter,toaster){
 
         $scope.init = function (){
             var eventId = $routeParams.id;
             $scope.getEventDetails(eventId);
         };
-
-
 
         $scope.getEventDetails = function(eventId){
             EventsService.getEventById (eventId, function (data){
@@ -99,8 +93,7 @@ define(['moment'], function (moment) {
         $scope.init();
     }
 
-
-    EventDetail.$inject =  ["$scope", "$http", "EventsService","$routeParams","GuestService","$location","$filter","toaster"];
+    return EventDetail;
 
 
 

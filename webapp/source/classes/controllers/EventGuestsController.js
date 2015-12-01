@@ -1,10 +1,6 @@
 define([], function () {
-     angular
-         .module("lafete")
-         .controller("EventGuestsController", EventGuestsController);
 
-
-         function EventGuestsController($scope,$http,$routeParams, EventsService){
+         var EventGuestsController = function($scope,$http,$routeParams, EventsService){
 
              $scope.init = function (){
                  var eventId = $routeParams.id;
@@ -17,15 +13,8 @@ define([], function () {
                      console.log("selected event", data.data);
                  });
              }
-
-
-
              $scope.init();
-
-
-
-
          }
 
-     EventGuestsController.$inject =  ["$scope", "$http","$routeParams", "EventsService"];
+        return EventGuestsController;
 });

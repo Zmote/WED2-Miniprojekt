@@ -3,12 +3,7 @@
  */
 define([], function () {
 
-    angular
-        .module("lafete")
-        .controller("AddPersonToEvent", AddPersonToEvent);
-
-
-    function AddPersonToEvent($scope,$http, EventsService, $routeParams, toaster,$location){
+    var AddPersonToEvent = function($scope,$http, EventsService, $routeParams, toaster,$location){
 
         var guest = $scope.guest = {};
         guest.name = "";
@@ -35,8 +30,5 @@ define([], function () {
 
     }
 
-    AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams","toaster","$location"];
-
-
-
+   return AddPersonToEvent;
 });

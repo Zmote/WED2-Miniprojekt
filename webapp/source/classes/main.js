@@ -7,7 +7,6 @@ require.config({
     // base url relative to the index.html
     baseUrl:'./',
     paths: {
-
         'angular': '../frameworks/angular/angular.min',
         'ngRoute': '../libraries/angular-route/angular-route',
         'app': '../classes',
@@ -15,7 +14,6 @@ require.config({
         'angular-toast': '../libraries/AngularJS-Toaster/toaster',
         'angular-animate' : '../libraries/angular-animate/angular-animate',
         'moment' : '../libraries/moment/moment'
-
     },
     // angular does not support async loading out of the box -> use the shim loader
     shim: {
@@ -37,4 +35,6 @@ require.config({
 });
 
 /*  Start the application */
-require(['app/modules/lafete']);
+require(['angular','app/modules/lafete'], function(Angular,Lafete){
+    Angular.bootstrap(document, ['lafete']);
+});
