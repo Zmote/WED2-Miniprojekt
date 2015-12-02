@@ -23,11 +23,6 @@ define(["angular","angularMocks",
             }));
 
             it('should call $http.get in auth', inject(function ( $httpBackend,EventsService) {
-                $httpBackend.when('GET','/api/events').respond({data:"cemil"});
-
-                var func = function (){};
-                EventsService.getAllEvents(func);
-                $httpBackend.flush();
 
 
 
