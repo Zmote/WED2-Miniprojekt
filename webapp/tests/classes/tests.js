@@ -5,6 +5,7 @@ require.config({
     baseUrl: './',
     paths: {
         'frameworks/angular': '../source/frameworks/angular/angular.min',
+        'AngularMock':'./libraries/angular-mocks/angular-mocks',
         'app': '../source/classes',
         'tests': './classes',
         'libraries/jasmine': ['libraries/jasmine/jasmine'],
