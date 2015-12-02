@@ -1,13 +1,11 @@
 /**
  * Created by Dogan on 23.11.15.
  */
-define([], function () {
+define(['lafete'], function (lafete) {
 
-    angular
-        .module("lafete")
-        .controller("EventDetail", EventDetail);
 
-    function EventDetail($scope,$http, EventsService, $routeParams,GuestService, $location){
+
+    var EventDetail = function($scope,$http, EventsService, $routeParams,GuestService, $location){
 
 
         $scope.init = function (){
@@ -67,9 +65,10 @@ define([], function () {
         $scope.init();
     }
 
+    lafete.controller("EventDetail", EventDetail);
 
     EventDetail.$inject =  ["$scope", "$http", "EventsService","$routeParams","GuestService","$location"];
 
-
+    return EventDetail;
 
 });

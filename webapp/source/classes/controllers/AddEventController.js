@@ -1,11 +1,8 @@
-define(['moment'], function (moment) {
-
-     angular
-         .module("lafete")
-         .controller("AddEventController", AddEventController);
+define(['moment','lafete'], function (moment,lafete) {
 
 
-         function AddEventController($scope,$http, EventsService,toaster,$location){
+
+         var AddEventController = function ($scope,$http, EventsService,toaster,$location){
              var formValidity = false;
              $scope.cemil = true;
              $scope.dateStatus = false;
@@ -31,12 +28,12 @@ define(['moment'], function (moment) {
                      $scope.cemil = true;
                  }
                  if(formValidity.$valid){
-                     if(!testDate(event.times.begin)){
+                     if(!$scope.testDate(event.times.begin)){
                          toaster.pop("error","Begin Date wrong, please check input Format, needs to be dd.mm.yyyy");
 
                          return;
                      }
-                     if(!testDate(event.times.end)){
+                     if(!$scope.testDate(event.times.end)){
                          toaster.pop("error","End Date wrong, please check input Format, needs to be dd.mm.yyyy");
 
                          return;
@@ -73,7 +70,7 @@ define(['moment'], function (moment) {
 
              };
 
-             function testDate(str){
+             $scope.testDate = function(str){
 
                  return moment( str, ["dd.MM.yyyy"]).isValid();
              }
@@ -117,6 +114,9 @@ define(['moment'], function (moment) {
 
          AddEventController.$inject =  ["$scope", "$http", "EventsService","toaster","$location"];
 
+         lafete.controller("AddEventController", AddEventController);
+
+         return AddEventController;
 
 
 });

@@ -1,7 +1,7 @@
 // Karma configuration
-// Generated on Wed Oct 21 2015 12:37:04 GMT-0600 (Mountain Daylight Time)
+// Generated on Mon Nov 30 2015 23:35:33 GMT+0100 (CET)
 
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -10,34 +10,35 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'requirejs'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js',
-      'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-mocks.js',
-      'toaster.js',
-      'test/**/*Spec.js'
+      'test-main.js',
+
+      {pattern: 'webapp/source/**/*.js', included: false},
+      {pattern: 'webapp/tests/**/*.js', included: false},
     ],
 
 
     // list of files to exclude
     exclude: [
+      'webapp/source/libraries/**/*Spec.js'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'toaster.js': ['coverage']
+
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['progress'],
 
 
     // web server port
@@ -61,19 +62,13 @@ module.exports = function (config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
 
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-coverage',
-      'karma-jasmine'
-    ],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
 
-    coverageReporter: {
-      type: 'html',
-      dir: 'coverage/'
-    }
-  });
-};
+    // Concurrency level
+    // how many browser should be started simultanous
+    concurrency: Infinity
+  })
+}

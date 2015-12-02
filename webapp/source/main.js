@@ -5,16 +5,16 @@
 
 require.config({
     // base url relative to the index.html
-    baseUrl:'./',
+    baseUrl:'../source',
     paths: {
 
-        'angular': '../frameworks/angular/angular.min',
-        'ngRoute': '../libraries/angular-route/angular-route',
-        'app': '../classes',
-        'event-service' : '../classes/services/eventService',
-        'angular-toast': '../libraries/AngularJS-Toaster/toaster',
-        'angular-animate' : '../libraries/angular-animate/angular-animate',
-        'moment' : '../libraries/moment/moment'
+        'angular': './frameworks/angular/angular.min',
+        'ngRoute': './libraries/angular-route/angular-route',
+        'event-service' : './classes/services/eventService',
+        'angular-toast': './libraries/AngularJS-Toaster/toaster',
+        'angular-animate' : './libraries/angular-animate/angular-animate',
+        'moment' : './libraries/moment/moment',
+        'lafete' : './classes/modules/lafete'
 
     },
     // angular does not support async loading out of the box -> use the shim loader
@@ -39,4 +39,4 @@ require.config({
 /*ne picim bir insansin*/
 
 /*  Start the application */
-require(['app/modules/lafete']);
+require(['lafete']);
