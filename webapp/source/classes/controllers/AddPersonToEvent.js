@@ -1,14 +1,12 @@
 /**
  * Created by Dogan on 23.11.15.
  */
-define([], function () {
-
-    angular
-        .module("lafete")
-        .controller("AddPersonToEvent", AddPersonToEvent);
+define(['lafete'], function (lafete) {
 
 
-    function AddPersonToEvent($scope,$http, EventsService, $routeParams, toaster,$location){
+
+
+     var AddPersonToEvent = function($scope,$http, EventsService, $routeParams, toaster,$location){
 
         var guest = $scope.guest = {};
         guest.name = "";
@@ -37,6 +35,8 @@ define([], function () {
 
     AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams","toaster","$location"];
 
+    lafete.controller("AddPersonToEvent", AddPersonToEvent);
 
+    return AddPersonToEvent;
 
 });

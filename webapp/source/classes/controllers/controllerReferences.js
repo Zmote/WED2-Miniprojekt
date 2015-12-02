@@ -12,7 +12,6 @@ define (function(){
         'classes/controllers/AddPersonToEvent',
         'classes/controllers/AddEventController',
         'classes/controllers/EventGuestsController',
-        'classes/controllers/EventController',
-        'classes/services/config'
+        'classes/controllers/EventController'
     ]
 });

@@ -1,13 +1,6 @@
-/**
- * Created by Dogan on 23.11.15.
- */
-define(['moment'], function (moment) {
+define(['lafete'], function (lafete) {
 
-    angular
-        .module("lafete")
-        .controller("EventDetail", EventDetail);
-
-    function EventDetail($scope,$http, EventsService, $routeParams,GuestService, $location,$filter,toaster){
+    var EventDetail = function($scope,$http, EventsService, $routeParams,GuestService, $location){
 
         $scope.init = function (){
             var eventId = $routeParams.id;
@@ -99,9 +92,10 @@ define(['moment'], function (moment) {
         $scope.init();
     }
 
+    lafete.controller("EventDetail", EventDetail);
 
     EventDetail.$inject =  ["$scope", "$http", "EventsService","$routeParams","GuestService","$location","$filter","toaster"];
 
-
+    return EventDetail;
 
 });

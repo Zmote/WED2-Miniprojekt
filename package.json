@@ -9,10 +9,25 @@
   "author": "Michael Gfeller",
   "license": "ISC",
   "dependencies": {
+    "angular-mocks": "^1.4.8",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-karma": "^0.12.1",
     "nedb": "^1.5.0",
-    "nodemon": "^1.8.1",
-    "shortid": "^2.2.4"
+    "nodemon": "^1.8.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.8",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.15",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-requirejs": "^0.2.2",
+    "phantomjs": "^1.9.19",
+    "requirejs": "^2.1.22"
   }
 }

@@ -1,7 +1,6 @@
-define([], function () {
-     angular
-         .module("lafete")
-         .controller("EventGuestsController", EventGuestsController);
+define(['lafete'], function (lafete) {
+
+
 
 
          function EventGuestsController($scope,$http,$routeParams, EventsService){
@@ -26,6 +25,9 @@ define([], function () {
 
 
          }
+    lafete.controller("EventGuestsController", EventGuestsController);
 
      EventGuestsController.$inject =  ["$scope", "$http","$routeParams", "EventsService"];
+
+    return EventGuestsController;
 });

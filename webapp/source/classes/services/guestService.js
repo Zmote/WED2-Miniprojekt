@@ -1,11 +1,10 @@
 /**
  * Created by Dogan on 23.11.15.
  */
-define([], function () {
+define(['lafete'], function (lafete) {
 
-    return angular
-            .module("lafete")
-            .factory("GuestService", function($http){
+
+        var GuestService = function($http){
 
                 return {
 
@@ -24,5 +23,9 @@ define([], function () {
 
 
 
-        });
+        };
+
+        lafete.factory("GuestService", GuestService);
+        GuestService.$inject = ["$http"];
+        return GuestService;
 });
