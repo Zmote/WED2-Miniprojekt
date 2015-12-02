@@ -18,30 +18,20 @@ define(["angular","angularMocks",
         describe('Event service test cases', function() {
             beforeEach(module("lafete"));
 
-            var $scope, EventsService,$httpBackend;
-
-
-            beforeEach(inject(function($injector) {
-               EventsService = $injector.get("EventsService");
-               $httpBackend = $injector.get("$httpBackend");
+            it('should exist', inject(function (EventsService) {
+                expect(EventsService).toBeDefined();
             }));
 
-            it('Should initialize value to cemil to true',  function() {
+            it('should call $http.get in auth', inject(function ( $httpBackend,EventsService) {
+                $httpBackend.when('GET','/api/events').respond({data:"cemil"});
 
-                 expect(EventsService).toBeDefined();
-            });
-
-            it('Should save new event ',  function() {
-                var form = {"name":"cemil"};
-                //console.log("EventsService", EventsService);
-                $httpBackend.when('GET','/api/events').respond(200,{"name":"cemil"});
+                var func = function (){};
+                EventsService.getAllEvents(func);
+                $httpBackend.flush();
 
 
-                expect(EventsService.getAllEvents()).toBeDefined();
 
-            });
-
-
+            }));
 
         });
 

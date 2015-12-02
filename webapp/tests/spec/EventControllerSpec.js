@@ -16,19 +16,31 @@ define(["angular","angularMocks",
 
 
 	describe('test', function() {
-        beforeEach(module("lafete"));
+        beforeEach(angular.mock.module("lafete"));
 
-		var $scope, $rootScope;
-
+		var $scope, $rootScope,EventsService, $httpBackend;
+        var form = {"name":"KmdXVkYR","description":"AV\\IIBpt","targetGroup":"[XZRwaXn","location":{"city":"cW`pvqly","name"
+			:"iv]QlkNI","street":"HnYkkniq","zipCode":"VlXivZvo"},"times":{"begin":"5.6.1046","end":"19.3.1264"}
+			,"guests":[]};
+		var formValidity = {};
 
 		beforeEach(inject(function($injector) {
 			$rootScope = $injector.get("$rootScope");
 			var $controller = $injector.get("$controller");
+			$httpBackend = $injector.get("$httpBackend");
 			$scope = $rootScope.$new();
+
+			EventsService = $injector.get("EventsService");
+
+
+
 			var AddEventcontroller = $controller('AddEventController', {
-				$scope: $scope
+				$scope: $scope,
+				EventsService:EventsService
 			});
 		}));
+
+
 
 		it('Should initialize value to cemil to true',  function() {
 
@@ -40,6 +52,21 @@ define(["angular","angularMocks",
 			expect($scope.testDate(date)).toBe(true);
 
 		})
+
+		it("testdate function should return  spy on ", function (){
+			formValidity.$valid = true;
+
+			$httpBackend.when('POST', '/api/events').respond({data:"cemil"});
+
+			$scope.saveNewEvent(form,formValidity);
+
+			$httpBackend.flush();
+			expect("cemil").toBe($scope.saveResult.data.data);
+		})
+
+
+
+
 
 
 

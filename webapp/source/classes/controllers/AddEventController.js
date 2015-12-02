@@ -20,6 +20,8 @@ define(['moment','lafete'], function (moment,lafete) {
              event.targetGroup = "";
              event.times = {begin: "", end :  "" };
              $scope.saveNewEvent = function ( event, formValidity ){
+
+
                  if(event.name || event.contributionsDescription || event.description || event.location.city
                      ||event.location.name || event.location.street || event.location.zipCode
                      || event.maximalAmountOfGuests || event.targetGroup || event.times.begin || event.times.end){
@@ -38,13 +40,20 @@ define(['moment','lafete'], function (moment,lafete) {
 
                          return;
                      }
+
+
                      var zafer = angular.copy(event);
                      zafer.times.begin = new Date(event.times.begin);
                      zafer.times.end = new Date(event.times.end);
+
+
+
                      EventsService.saveNewEvent(event, function (data){
-                         console.log("result of saved event", data);
+                          //console.log("result of saved event", data);
+                          $scope.saveResult = data;
                          $location.path('#/events');
                      });
+
                  }
              };
 

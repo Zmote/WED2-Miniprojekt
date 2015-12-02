@@ -9,7 +9,7 @@ define(['lafete'], function (lafete) {
 
             return {
                 getAllEvents: function (call){
-                   return $http.get("/api/events", function (data){
+                    $http.get("/api/events", function (data){
                         call(data);
                     })
                 }
