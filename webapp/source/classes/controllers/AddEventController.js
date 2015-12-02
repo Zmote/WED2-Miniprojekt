@@ -1,7 +1,7 @@
 define(['moment','lafete'], function (moment,lafete) {
 
          var AddEventController = function ($scope,$http, EventsService,toaster,$location){
-             var formValidity = false;
+             //var formValidity = false;
              $scope.cemil = true;
              //$scope.dateStatus = false;
              var event = $scope.event = {};
@@ -17,6 +17,7 @@ define(['moment','lafete'], function (moment,lafete) {
              event.name = "";
              event.targetGroup = "";
              event.times = {begin: "", end :  "" };
+
              $scope.saveNewEvent = function ( event, formValidity ){
                  if(event.name || event.contributionsDescription || event.description || event.location.city
                      ||event.location.name || event.location.street || event.location.zipCode

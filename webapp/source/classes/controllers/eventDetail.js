@@ -1,6 +1,6 @@
-define(['lafete'], function (lafete) {
+define(['lafete','moment'], function (lafete,moment) {
 
-    var EventDetail = function($scope,$http, EventsService, $routeParams,GuestService, $location){
+    var EventDetail = function($scope,$http, EventsService, $routeParams,GuestService, $location,$filter,toaster){
 
         $scope.init = function (){
             var eventId = $routeParams.id;
