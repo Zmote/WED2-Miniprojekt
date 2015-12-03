@@ -6,7 +6,7 @@ define(['lafete'], function (lafete) {
 
 
 
-     var AddPersonToEvent = function($scope,$http, EventsService, $routeParams, toaster,$location){
+    var AddPersonToEvent = function($scope,$http, EventsService, $routeParams, toaster,$location){
 
         var guest = $scope.guest = {};
         guest.name = "";
@@ -20,6 +20,7 @@ define(['lafete'], function (lafete) {
 
                 if(data.status == 200){
                     $scope.guest = {};
+                    $scope.savedGuest = data;
                     toaster.pop('success', "Succesfully added new Guest!");
                     $location.path("/eventDetail/"+ $routeParams.eventId);
 
@@ -38,5 +39,4 @@ define(['lafete'], function (lafete) {
     lafete.controller("AddPersonToEvent", AddPersonToEvent);
 
     return AddPersonToEvent;
-
 });

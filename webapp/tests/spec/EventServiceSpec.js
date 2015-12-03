@@ -1,48 +1,37 @@
 
-
-
 define(["angular","angularMocks",
         "ngRoute","angular-animate",
         "angular-toast",
         "moment",
         "lafete",
         "ControllerReferences",
-        "EventsServiceProvider",
+        "EventsService",
         "angularResource",
         "AddEventController",
 
     ] ,
     function () {
 
-
         describe('Event service test cases', function() {
-            beforeEach(module("lafete"));
-
-            var $scope, EventsService,$httpBackend;
-
-
-            beforeEach(inject(function($injector) {
-               EventsService = $injector.get("EventsService");
-               $httpBackend = $injector.get("$httpBackend");
+            var EventsService;
+            beforeEach(angular.mock.module("lafete"));
+            beforeEach(inject(function($injector){
+             EventsService = $injector.get("EventsService");
             }));
-
-            it('Should initialize value to cemil to true',  function() {
-
-                 expect(EventsService).toBeDefined();
+            it('should exist', function () {
+                expect(EventsService).toBeDefined();
             });
 
-            it('Should save new event ',  function() {
-                var form = {"name":"cemil"};
-                //console.log("EventsService", EventsService);
-                $httpBackend.when('GET','/api/events').respond(200,{"name":"cemil"});
-
-
-                expect(EventsService.getAllEvents()).toBeDefined();
-
+            it('should call $http.get in auth', function () {
+                var cemil;
+                spyOn(EventsService,'getAllEvents').and.callFake(function(call){
+                       call({data:"zafer"});
+                });
+                EventsService.getAllEvents(function(data){
+                    cemil = data.data;
+                });
+                expect(cemil).toBe("zafer");
             });
-
-
-
         });
 
     });

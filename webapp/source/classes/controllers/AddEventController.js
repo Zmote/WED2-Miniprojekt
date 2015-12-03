@@ -45,72 +45,17 @@ define(['moment','lafete'], function (moment,lafete) {
                      zafer.times.end = moment(event.times.end,"DD.MM.YYYY").toDate().getTime();
                      EventsService.saveNewEvent(zafer, function (data){
                          console.log("result of saved event", data);
+                         $scope.saveResult = data;
                          $location.path('#/events');
                      });
                  }
              };
 
-             $scope.fillOutForm = function(event){
-
-                 event.contributionDescription = $scope.genereteInput("string");
-                 event.description =  $scope.genereteInput("string");
-                 event.location = {
-                     city :  $scope.genereteInput("string"),
-                     name :  $scope.genereteInput("string"),
-                     street :  $scope.genereteInput("string"),
-                     zipCode :  $scope.genereteInput("string")
-                 };
-                 event.maximalAmountOfGuests = $scope.genereteInput("string");
-                 event.name = $scope.genereteInput("string");
-                 event.targetGroup = $scope.genereteInput("string");
-                 event.times =
-                 {
-                    begin: $scope.genereteInput("date"),
-                    end :  $scope.genereteInput("date")
-                 }
-
-             };
-
              $scope.testDate = function(str){
                  return moment( str, ["dd.MM.yyyy"]).isValid();
-             }
+             };
 
-
-             $scope.genereteInput = function (type){
-                 var val = "d-m-fyyy";
-
-                 if(type == "string"){
-                     return val.split('').map(function(char, i){
-
-                         var random = Math.floor(Math.random()* 57 +65);
-                         return String.fromCharCode(random);
-                     }).join("");
-
-                 }
-
-                 if(type == "date"){
-                     return val.split('').map(function(char, i){
-                         if(char == "-")
-                           return "/";
-
-                         if(char == "d")
-                             return Math.floor(Math.random()* 30 + 1);
-                         if(char == "m")
-                             return Math.floor(Math.random()* 11 + 1);
-                         if(char == "f")
-                             return Math.floor(Math.random()* 1 + 1 );
-                         if(char == "y")
-                             return Math.floor(Math.random()* 8 );
-
-                     }).join("");
-
-                 }
-
-
-
-             }
-
-         }
+         };
 
          AddEventController.$inject =  ["$scope", "$http", "EventsService","toaster","$location"];
 

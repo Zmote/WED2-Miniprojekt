@@ -1,4 +1,3 @@
-
 var allTestFiles = [];
 var TEST_REGEXP = /spec\.js$/i;
 
@@ -24,7 +23,7 @@ require.config({
 
 
     paths :{
-        "angular":'./webapp/source/frameworks/angular/angular',
+        "angular":'webapp/source/frameworks/angular/angular',
         "ngRoute":'webapp/source/libraries/angular-route/angular-route',
         "angular-animate" : 'webapp/source/libraries/angular-animate/angular-animate',
         "angular-toast" : 'webapp/source/libraries/AngularJS-Toaster/toaster',
@@ -32,7 +31,8 @@ require.config({
         "lafete": "webapp/source/classes/modules/lafete",
         "ControllerReferences": "webapp/source/classes/controllers/controllerReferences",
         "AddEventController": "webapp/source/classes/controllers/AddEventController",
-        "EventsServiceProvider": "webapp/source/classes/services/eventService",
+        "AddPersonToEvent": "webapp/source/classes/controllers/AddPersonToEvent",
+        "EventsService": "webapp/source/classes/services/eventService",
         "angularMocks":'webapp/tests/lib/angular-mocks/angular-mocks',
         "angularResource":'webapp/tests/lib/angular-resource/angular-resource'
     },

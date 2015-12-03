@@ -1,52 +1,69 @@
-define(['lafete'], function (lafete) {
 
 
 
-        var EventsService = function($http){
+define(["angular","angularMocks",
+        "ngRoute","angular-animate",
+        "angular-toast",
+        "moment",
+        "lafete",
+        "ControllerReferences",
+        "EventsService",
+        "angularResource",
+        "AddEventController",
 
-            return {
-                getAllEvents: function (call){
-                   return $http.get("/api/events", function (data){
-                        call(data);
-                    })
-                }
-                ,
-                saveNewEvent: function (event, call) {
-                    $http.post("/api/events", event).then(function (data) {
-                        call(data);
-                    });
-                },
-                getEventById : function(id, call){
-                    $http.get("/api/events/"+id).then(function (data) {
-                        call(data);
-                    });
-                },
-                saveNewGuest: function (guest,eventID, call) {
-                    $http.post("/api/events/"+ eventID+"/guests", guest).then(function (data) {
-                        call(data);
-                    });
-                },
-                updateEvent : function (event, call){
-                    $http.post("/api/events/"+event._id , event).then(function (data) {
-                        call(data);
-                    });
-
-                },
-                deleteEvent : function (event, call){
-
-                    $http.post('/api/events/delete/'+event._id ).then(function (data) {
-                        call(data);
-                    });
-                }
-            }
-
-        };
-
-        lafete.factory("EventsService", EventsService );
-        EventsService.$inject = ["$http"];
-
-        return EventsService;
+    ] ,
+    function () {
 
 
+        describe('Event service test cases', function() {
+            var EventsService;
 
-});
+            beforeEach(module("lafete"));
+
+            beforeEach(inject(function($injector) {
+
+                EventsService = $injector.get("EventsService");
+
+            }));
+
+            it('should exist', function () {
+                expect(EventsService).toBeDefined();
+            });
+
+            it('should call getAllEvents with fake respond', function ( ) {
+
+                spyOn(EventsService, 'getAllEvents').and.callFake(function (call) {
+                    call ( {'foo' : "bar"} );
+
+                });
+
+                var result;
+                EventsService.getAllEvents(function (data){
+                    result = data;
+                }); // does cleverness
+
+                expect(result.foo).toEqual("bar");
+
+
+            });
+
+            it('should call $http.get in auth', function ( ) {
+
+                spyOn(EventsService, 'getAllEvents').and.callFake(function (call) {
+                    call ( {'foo' : "bar"} );
+
+                });
+
+                var result;
+                EventsService.getAllEvents(function (data){
+                    result = data;
+                }); // does cleverness
+
+                expect(result.foo).toEqual("bar");
+
+
+            });
+
+        });
+
+    });
