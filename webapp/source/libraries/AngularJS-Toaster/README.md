@@ -143,7 +143,7 @@ There are four types of body renderings: trustedHtml', 'template', 'templateWith
       }])
         ```
         
-    There are additional documented use cases in these [tests](test/EventControllerSpec.js).
+    There are additional documented use cases in these [tests](test/AddEventControllerSpec.js).
     
 All four options can be configured either globally for all toasts or individually per toast.pop() call.  If the `body-output-type` option is configured on the toast, it will take precedence over the global configuration for that toast instance.
 

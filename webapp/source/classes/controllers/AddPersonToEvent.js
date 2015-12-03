@@ -20,6 +20,7 @@ define(['lafete'], function (lafete) {
 
                 if(data.status == 200){
                     $scope.guest = {};
+                    $scope.savedGuest = data;
                     toaster.pop('success', "Succesfully added new Guest!");
                     $location.path("/eventDetail/"+ $routeParams.eventId);
 

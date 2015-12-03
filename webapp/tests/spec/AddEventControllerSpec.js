@@ -19,7 +19,7 @@ define(["angular","angularMocks",
         beforeEach(angular.mock.module("lafete"));
 
 		var $scope, $rootScope,EventsService, $httpBackend;
-        var form = {"name":"KmdXVkYR","description":"AV\\IIBpt","targetGroup":"[XZRwaXn","location":{"city":"cW`pvqly","name"
+        var form = {"name":"zafer","description":"AV\\IIBpt","targetGroup":"[XZRwaXn","location":{"city":"cW`pvqly","name"
 			:"iv]QlkNI","street":"HnYkkniq","zipCode":"VlXivZvo"},"times":{"begin":"5.6.1046","end":"19.3.1264"}
 			,"guests":[]};
 		var formValidity = {};
@@ -49,9 +49,13 @@ define(["angular","angularMocks",
 
 		it("testdate function should return if input is dd.MM.yyyy", function (){
            var date = "27.12.1982";
+
+
 			expect($scope.testDate(date)).toBe(true);
 
 		})
+
+
 
 		it("testdate function should return  spy on ", function (){
 			formValidity.$valid = true;

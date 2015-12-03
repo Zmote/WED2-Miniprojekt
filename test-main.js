@@ -31,6 +31,7 @@ require.config({
     "lafete": "webapp/source/classes/modules/lafete",
     "ControllerReferences": "webapp/source/classes/controllers/controllerReferences",
     "AddEventController": "webapp/source/classes/controllers/AddEventController",
+    "AddPersonToEvent": "webapp/source/classes/controllers/AddPersonToEvent",
     "EventsServiceProvider": "webapp/source/classes/services/eventService",
     "angularMocks":'webapp/tests/lib/angular-mocks/angular-mocks',
     "angularResource":'webapp/tests/lib/angular-resource/angular-resource'

@@ -16,17 +16,53 @@ define(["angular","angularMocks",
 
 
         describe('Event service test cases', function() {
+            var EventsService;
+
             beforeEach(module("lafete"));
 
-            it('should exist', inject(function (EventsService) {
+            beforeEach(inject(function($injector) {
+
+                EventsService = $injector.get("EventsService");
+
+            }));
+
+            it('should exist', function () {
                 expect(EventsService).toBeDefined();
-            }));
+            });
 
-            it('should call $http.get in auth', inject(function ( $httpBackend,EventsService) {
+            it('should call getAllEvents with fake respond', function ( ) {
+
+                spyOn(EventsService, 'getAllEvents').and.callFake(function (call) {
+                       call ( {'foo' : "bar"} );
+
+                });
+
+                var result;
+                EventsService.getAllEvents(function (data){
+                    result = data;
+                }); // does cleverness
+
+                expect(result.foo).toEqual("bar");
 
 
+            });
 
-            }));
+            it('should call $http.get in auth', function ( ) {
+
+                spyOn(EventsService, 'getAllEvents').and.callFake(function (call) {
+                    call ( {'foo' : "bar"} );
+
+                });
+
+                var result;
+                EventsService.getAllEvents(function (data){
+                    result = data;
+                }); // does cleverness
+
+                expect(result.foo).toEqual("bar");
+
+
+            });
 
         });
 
