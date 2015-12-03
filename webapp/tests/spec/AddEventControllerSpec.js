@@ -1,6 +1,3 @@
-
-
-
 define(["angular","angularMocks",
 		"ngRoute","angular-animate",
 		"angular-toast",

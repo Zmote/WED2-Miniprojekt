@@ -12,7 +12,6 @@ module.exports = function(config) {
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['jasmine', 'requirejs'],
 
-
         // list of files / patterns to load in the browser
         files: [
             'test-main.js',
@@ -58,9 +57,11 @@ module.exports = function(config) {
         autoWatch: true,
 
 
+
+
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome'],
+        browsers: ['Firefox'],
 
 
         // Continuous Integration mode

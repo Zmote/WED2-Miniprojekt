@@ -5,7 +5,7 @@ define(["angular","angularMocks",
         "moment",
         "lafete",
         "ControllerReferences",
-        "EventsService",
+        "EventsServiceProvider",
         "angularResource",
         "AddEventController",
 
@@ -14,9 +14,9 @@ define(["angular","angularMocks",
 
         describe('Event service test cases', function() {
             var EventsService;
-            beforeEach(angular.mock.module("lafete"));
+                beforeEach(module("lafete"));
             beforeEach(inject(function($injector){
-             EventsService = $injector.get("EventsService");
+                EventsService = $injector.get("EventsService");
             }));
 
             it('should exist', function () {

@@ -21,24 +21,20 @@ require.config({
     // Karma serves files under /base, which is the basePath from your config file
     baseUrl: '/base/',
 
-  paths :{
-    "angular":'webapp/source/frameworks/angular/angular',
-    "ngRoute":'webapp/source/libraries/angular-route/angular-route',
-    "angular-animate" : 'webapp/source/libraries/angular-animate/angular-animate',
-    "angular-toast" : 'webapp/source/libraries/AngularJS-Toaster/toaster',
-    "moment": "webapp/source/libraries/moment/moment",
-    "lafete": "webapp/source/classes/modules/lafete",
-    "ControllerReferences": "webapp/source/classes/controllers/controllerReferences",
-    "AddEventController": "webapp/source/classes/controllers/AddEventController",
-    "AddPersonToEvent": "webapp/source/classes/controllers/AddPersonToEvent",
-    "EventsServiceProvider": "webapp/source/classes/services/eventService",
-    "angularMocks":'webapp/tests/lib/angular-mocks/angular-mocks',
-    "angularResource":'webapp/tests/lib/angular-resource/angular-resource'
-  },
 
-  shim: {
-    'angular': {
-      exports: 'angular'
+    paths :{
+        "angular":'webapp/source/frameworks/angular/angular',
+        "ngRoute":'webapp/source/libraries/angular-route/angular-route',
+        "angular-animate" : 'webapp/source/libraries/angular-animate/angular-animate',
+        "angular-toast" : 'webapp/source/libraries/AngularJS-Toaster/toaster',
+        "moment": "webapp/source/libraries/moment/moment",
+        "lafete": "webapp/source/classes/modules/lafete",
+        "ControllerReferences": "webapp/source/classes/controllers/controllerReferences",
+        "AddEventController": "webapp/source/classes/controllers/AddEventController",
+        "AddPersonToEvent": "webapp/source/classes/controllers/AddPersonToEvent",
+        "EventsServiceProvider": "webapp/source/classes/services/eventService",
+        "angularMocks":'webapp/tests/lib/angular-mocks/angular-mocks',
+        "angularResource":'webapp/tests/lib/angular-resource/angular-resource'
     },
 
     shim: {
@@ -72,4 +68,4 @@ require.config({
 
     // we have to kickoff jasmine, as it is asynchronous
     callback: window.__karma__.start
-}});
+});
