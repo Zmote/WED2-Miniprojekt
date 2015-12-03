@@ -30,14 +30,14 @@ define(['lafete'], function (lafete) {
                     });
                 },
                 updateEvent : function (event, call){
-                    $http.post("/api/events/"+event.id , event).then(function (data) {
+                    $http.post("/api/events/"+event._id , event).then(function (data) {
                         call(data);
                     });
 
                 },
                 deleteEvent : function (event, call){
 
-                    $http.post('/api/events/delete/'+event.id ).then(function (data) {
+                    $http.post('/api/events/delete/'+event._id ).then(function (data) {
                         call(data);
                     });
                 }
