@@ -70,10 +70,6 @@ define(["angular","angularMocks",
 
 
 
-
-
-
-
 	});
 
 });

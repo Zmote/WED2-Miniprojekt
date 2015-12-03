@@ -13,6 +13,5 @@ define (function(){
         'classes/controllers/AddEventController',
         'classes/controllers/EventGuestsController',
         'classes/controllers/EventController'
-
     ]
 });

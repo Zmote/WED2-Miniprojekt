@@ -36,7 +36,5 @@ require.config({
     }
 });
 
-/*ne picim bir insansin*/
-
 /*  Start the application */
 require(['lafete']);

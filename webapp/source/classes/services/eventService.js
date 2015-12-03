@@ -1,4 +1,4 @@
-/**
+/*
  * Created by Dogan on 23.11.15.
  */
 define(['lafete'], function (lafete) {

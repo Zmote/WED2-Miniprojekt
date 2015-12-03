@@ -26,7 +26,7 @@
           </div>
           <div class="col-sm-12">
               <a class="btn btn-info" href="#eventGuests/{{selectedEvent._id}}">
-                  Guests : {{selectedEvent.guests.length}}
+                  Guests : {{registeredUsers.length}}
               </a>
               <a type="button pull-right" ng-click="changeEditableStatus(selectedEvent)" class="btn btn-success  " >
                   <i class="glyphicon glyphicon-edit"></i>
@@ -40,8 +40,8 @@
            <div>{{selectedEvent.description}}</div>
            <h4 ng-show="selectedEvent.targetGroup" class="text-info">Zielgruppe</h4>
            <div>{{selectedEvent.targetGroup}}</div>
-           <h4 ng-show="selectedEvent.contributionsDescription" class="text-info">Event-Beiträge</h4>
-           <div>{{selectedEvent.contributionsDescription}}</div>
+           <h4 ng-show="selectedEvent.contributionDescription" class="text-info">Event-Beiträge</h4>
+           <div>{{selectedEvent.contributionDescription}}</div>
            <h4 ng-show="selectedEvent.location"class="text-info">Adresse</h4>
            <div>{{selectedEvent.location.name}}</div>
            <div>{{selectedEvent.location.street}}</div>
@@ -66,8 +66,13 @@
            </div>
 
            <div class="form-group">
+               <h4   class="text-info">Max. Anzahl Gäste</h4>
+               <input  class="form-control margin-top-20" ng-model="selectedEvent.maximalAmountOfGuests">
+           </div>
+
+           <div class="form-group">
                <h4   class="text-info">Event-Beiträge</h4>
-               <input  class="form-control margin-top-20" ng-model="selectedEvent.contributionsDescription">
+               <input  class="form-control margin-top-20" ng-model="selectedEvent.contributionDescription">
            </div>
 
            <div class="form-group">
@@ -132,13 +137,19 @@
    </div>
 
 
-   <div class="col-sm-12">
-       <hr>
-       <div class="col-sm-12">
-           <h4 class="text-info">Gäste</h4>
-       </div>
+  <div class="col-xs-12">
+      <h4 class="text-info col-xs-4">Gäste</h4>
+      <div class="col-md-4 pull-right">
+          <div  ng-click="addGuest(selectedEvent)" class="btn btn-info pull-right">
+              <i class="glyphicon glyphicon-plus"></i>
+              Add Guests
+          </div>
+      </div>
+  </div>
+  <div class="col-md-12">
+      <hr>
        <div  ng-if="guest.name"
-             class="col-sm-5  guest"
+             class="col-md-4 guest"
              ng-repeat="guest in selectedEvent.guests">
            <div ng-hide="guest.canceled" class="bs-callout bs-callout-info">
                <div class="hover-btn col-sm-4 pull-right margin-bottom-20" ng-init="guest.isEditable = true">
@@ -171,14 +182,6 @@
 
             </div>
        </div>
-
-    <div class="col-xs-2 pull-right">
-     <a  href="#/event/{{selectedEvent._id}}/person" class="btn btn-info margin-top-20 margin-right-20 pull-right">
-      <i class="glyphicon glyphicon-plus"></i>
-         Add Guests
-     </a>
-    </div>
-
    </div>
 
  </div>

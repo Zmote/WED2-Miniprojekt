@@ -1,29 +1,22 @@
 
-
-
 define(["angular","angularMocks",
         "ngRoute","angular-animate",
         "angular-toast",
         "moment",
         "lafete",
         "ControllerReferences",
-        "EventsServiceProvider",
+        "EventsService",
         "angularResource",
         "AddEventController",
 
     ] ,
     function () {
 
-
         describe('Event service test cases', function() {
             var EventsService;
-
-            beforeEach(module("lafete"));
-
-            beforeEach(inject(function($injector) {
-
-                EventsService = $injector.get("EventsService");
-
+            beforeEach(angular.mock.module("lafete"));
+            beforeEach(inject(function($injector){
+             EventsService = $injector.get("EventsService");
             }));
 
             it('should exist', function () {
@@ -63,7 +56,6 @@ define(["angular","angularMocks",
 
 
             });
-
         });
 
     });

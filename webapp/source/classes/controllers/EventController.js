@@ -6,6 +6,7 @@ define(['lafete'], function (lafete) {
 
             $http.get("/api/events").then(function (data) {
                 console.log("events", data.data.events);
+
                 $scope.events = data.data.events;
             })
 
