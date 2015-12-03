@@ -1,9 +1,10 @@
+
 var allTestFiles = [];
 var TEST_REGEXP = /spec\.js$/i;
 
 // Get a list of all the test files to include
 Object.keys(window.__karma__.files).forEach(function(file) {
-    console.log("file anme ==> ", file);
+    //console.log("file anme ==> ", file);
     if (TEST_REGEXP.test(file)) {
 
 
