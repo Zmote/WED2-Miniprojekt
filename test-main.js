@@ -33,6 +33,7 @@ require.config({
         "AddEventController": "webapp/source/classes/controllers/AddEventController",
         "AddPersonToEvent": "webapp/source/classes/controllers/AddPersonToEvent",
         "EventsServiceProvider": "webapp/source/classes/services/eventService",
+        "GuestServiceProvider": "webapp/source/classes/services/guestService",
         "angularMocks":'webapp/tests/lib/angular-mocks/angular-mocks',
         "angularResource":'webapp/tests/lib/angular-resource/angular-resource'
     },
