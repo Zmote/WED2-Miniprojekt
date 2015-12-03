@@ -7,7 +7,7 @@ define(["angular","angularMocks",
         "ControllerReferences",
         "EventsService",
         "angularResource",
-        "AddEventController",
+        "AddEventController"
 
     ] ,
     function () {

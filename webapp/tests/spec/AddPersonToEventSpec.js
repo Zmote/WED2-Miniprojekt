@@ -9,7 +9,7 @@ define(["angular","angularMocks",
 		"ControllerReferences",
 		"EventsServiceProvider",
 		"angularResource",
-	 	"AddPersonToEvent",
+	 	"AddPersonToEvent"
 
 	] ,
 	function ( ) {
