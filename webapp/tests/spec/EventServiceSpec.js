@@ -18,19 +18,43 @@ define(["angular","angularMocks",
             beforeEach(inject(function($injector){
              EventsService = $injector.get("EventsService");
             }));
+
             it('should exist', function () {
                 expect(EventsService).toBeDefined();
             });
 
-            it('should call $http.get in auth', function () {
-                var cemil;
-                spyOn(EventsService,'getAllEvents').and.callFake(function(call){
-                       call({data:"zafer"});
+            it('should call getAllEvents with fake respond', function ( ) {
+
+                spyOn(EventsService, 'getAllEvents').and.callFake(function (call) {
+                       call ( {'foo' : "bar"} );
+
                 });
-                EventsService.getAllEvents(function(data){
-                    cemil = data.data;
+
+                var result;
+                EventsService.getAllEvents(function (data){
+                    result = data;
+                }); // does cleverness
+
+                expect(result.foo).toEqual("bar");
+
+
+            });
+
+            it('should call $http.get in auth', function ( ) {
+
+                spyOn(EventsService, 'getAllEvents').and.callFake(function (call) {
+                    call ( {'foo' : "bar"} );
+
                 });
-                expect(cemil).toBe("zafer");
+
+                var result;
+                EventsService.getAllEvents(function (data){
+                    result = data;
+                }); // does cleverness
+
+                expect(result.foo).toEqual("bar");
+
+
             });
         });
 

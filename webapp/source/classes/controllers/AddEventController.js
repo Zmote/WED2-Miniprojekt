@@ -19,6 +19,8 @@ define(['moment','lafete'], function (moment,lafete) {
              event.times = {begin: "", end :  "" };
 
              $scope.saveNewEvent = function ( event, formValidity ){
+
+
                  if(event.name || event.contributionsDescription || event.description || event.location.city
                      ||event.location.name || event.location.street || event.location.zipCode
                      || event.maximalAmountOfGuests || event.targetGroup || event.times.begin || event.times.end){
@@ -40,20 +42,28 @@ define(['moment','lafete'], function (moment,lafete) {
                          toaster.pop("error","End time can't be before Begin Time");
                          return;
                      }
+
+
                      var zafer = angular.copy(event);
-                     zafer.times.begin = moment(event.times.begin,"DD.MM.YYYY").toDate().getTime();
-                     zafer.times.end = moment(event.times.end,"DD.MM.YYYY").toDate().getTime();
-                     EventsService.saveNewEvent(zafer, function (data){
-                         console.log("result of saved event", data);
-                         $scope.saveResult = data;
+
+                     zafer.times.begin = new Date(event.times.begin);
+                     zafer.times.end = new Date(event.times.end);
+
+
+
+                     EventsService.saveNewEvent(event, function (data){
+                          //console.log("result of saved event", data);
+                          $scope.saveResult = data;
                          $location.path('#/events');
                      });
+
                  }
              };
 
              $scope.testDate = function(str){
                  return moment( str, ["dd.MM.yyyy"]).isValid();
-             };
+             }
+
 
          };
 
