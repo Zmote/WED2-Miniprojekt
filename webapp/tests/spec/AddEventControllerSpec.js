@@ -92,7 +92,7 @@ define(["angular","angularMocks",
             expect(EventsService.saveNewEvent).toHaveBeenCalled();
 
         });
-
+        /*
         it("should create a new event",function(){
             var formValidity = {};
             formValidity.$valid = true;
@@ -102,6 +102,7 @@ define(["angular","angularMocks",
             var body = angular.element(document.getElementById("thisBody")).html();
             console.log("I am body: ", body);
         })
+        */
 
 	});
 

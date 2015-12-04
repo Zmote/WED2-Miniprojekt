@@ -7,26 +7,25 @@ define(['lafete','moment'], function (lafete,moment) {
             $scope.getEventDetails(eventId);
         };
 
-
+        $scope.setRetrievedData = function (data){
+            $scope.selectedEvent = data.data;
+            $scope.registeredUsers = [];
+            $scope.selectedEvent.isEditable = true;
+            $scope.checkRegisteredUsers($scope.selectedEvent);
+            $scope.$watch('selectedEvent.times.begin', function (newValue) {
+                $scope.selectedEvent.times.begin = $filter('date')(newValue, 'dd.MM.yyyy');
+            });
+            $scope.$watch('selectedEvent.times.end', function (newValue) {
+                $scope.selectedEvent.times.end = $filter('date')(newValue, 'dd.MM.yyyy');
+            });
+        };
 
         $scope.getEventDetails = function(eventId){
-            EventsService.getEventById (eventId, function (data){
-                $scope.selectedEvent = data.data;
-                $scope.registeredUsers = [];
-                $scope.selectedEvent.isEditable = true;
-                $scope.checkRegisteredUsers($scope.selectedEvent);
-                $scope.$watch('selectedEvent.times.begin', function (newValue) {
-                    $scope.selectedEvent.times.begin = $filter('date')(newValue, 'dd.MM.yyyy');
-                });
-                $scope.$watch('selectedEvent.times.end', function (newValue) {
-                    $scope.selectedEvent.times.end = $filter('date')(newValue, 'dd.MM.yyyy');
-                });
-            });
+            EventsService.getEventById (eventId,$scope.setRetrievedData);
 
         };
 
         $scope.checkRegisteredUsers = function(event){
-            console.log(event);
             for(var i = 0;i < event.guests.length;i++){
                 if(!event.guests[i].canceled){
                     $scope.registeredUsers.push(event.guests[i]);
@@ -43,12 +42,12 @@ define(['lafete','moment'], function (lafete,moment) {
             //console.log("from delete guest", guest);
             guest.canceled = true;
             GuestService.updateGuest (guest ,event._id, function (data){
-
+                console.log("I enter");
                 $scope.changeEditableStatus(guest);
                 $scope.getEventDetails(event._id);
             });
             $scope.changeEditableStatus(guest);
-        }
+        };
 
         $scope.updateGuest = function (guest , event){
             //console.log("from delete event", event);
@@ -80,14 +79,13 @@ define(['lafete','moment'], function (lafete,moment) {
             EventsService.updateEvent(zafer, function (data){
                 $scope.getEventDetails(event._id);
             });
-        }
+        };
 
         $scope.deleteEvent = function (event){
-
             EventsService.deleteEvent(event, function (data){
                 $location.path("#/events");
             });
-        }
+        };
 
         $scope.init();
     }
