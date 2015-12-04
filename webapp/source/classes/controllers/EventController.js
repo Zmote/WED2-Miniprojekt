@@ -8,10 +8,10 @@ define(['lafete'], function (lafete) {
                 console.log("events", data.data.events);
 
                 $scope.events = data.data.events;
+                console.log("I am scope.events", $scope.events);
             })
+         };
 
-
-         }
          lafete.controller("EventController",EventController);
 
          EventController.$inject = ["$scope", "$http", "EventsService"];

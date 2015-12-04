@@ -7,16 +7,20 @@ define(["angular","angularMocks",
         "ControllerReferences",
         "EventsServiceProvider",
         "angularResource",
-        "AddEventController",
-
+        "AddEventController"
     ] ,
     function () {
 
         describe('Event service test cases', function() {
-            var EventsService;
+            var EventsService,eventsBefore,eventsAfter,event,timeout,$location,form;
                 beforeEach(module("lafete"));
             beforeEach(inject(function($injector){
+                $location = $injector.get("$location");
+                var $controller = $injector.get("$controller");
                 EventsService = $injector.get("EventsService");
+                form = {"name":"zafer","description":"AV\\IIBpt","targetGroup":"[XZRwaXn","location":{"city":"cW`pvqly","name"
+                    :"iv]QlkNI","street":"HnYkkniq","zipCode":"VlXivZvo"},"times":{"begin":"5.6.1046","end":"19.3.1264"}
+                    ,"guests":[]};
             }));
 
             it('should exist', function () {
@@ -33,13 +37,12 @@ define(["angular","angularMocks",
                 var result;
                 EventsService.getAllEvents(function (data){
                     result = data;
-                }); // does cleverness
+                });
 
                 expect(result.foo).toEqual("bar");
 
 
             });
-
             it('should call $http.get in auth', function ( ) {
 
                 spyOn(EventsService, 'getAllEvents').and.callFake(function (call) {
@@ -50,12 +53,13 @@ define(["angular","angularMocks",
                 var result;
                 EventsService.getAllEvents(function (data){
                     result = data;
-                }); // does cleverness
+                });
 
                 expect(result.foo).toEqual("bar");
 
-
             });
+
         });
+
 
     });

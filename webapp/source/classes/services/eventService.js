@@ -26,6 +26,7 @@ define(['lafete'], function (lafete) {
                 },
                 saveNewGuest: function (guest,eventID, call) {
                     $http.post("/api/events/"+ eventID+"/guests", guest).then(function (data) {
+                        console.log(data);
                         call(data);
                     });
                 },

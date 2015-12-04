@@ -3,9 +3,6 @@
  */
 define(['lafete'], function (lafete) {
 
-
-
-
     var AddPersonToEvent = function($scope,$http, EventsService, $routeParams, toaster,$location){
 
         var guest = $scope.guest = {};
@@ -25,7 +22,6 @@ define(['lafete'], function (lafete) {
                 toaster.pop('error',"Couldn't add new Guest!");
                 console.log("Error: ", data.status + " " + data.statusText);
             }
-
         };
 
         $scope.saveNewGuest = function ( guest ){

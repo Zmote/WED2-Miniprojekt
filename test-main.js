@@ -30,6 +30,8 @@ require.config({
         "moment": "webapp/source/libraries/moment/moment",
         "lafete": "webapp/source/classes/modules/lafete",
         "ControllerReferences": "webapp/source/classes/controllers/controllerReferences",
+        "EventDetail":"webapp/source/classes/controllers/eventDetail",
+        "EventController": "webapp/source/classes/controllers/EventController",
         "AddEventController": "webapp/source/classes/controllers/AddEventController",
         "AddPersonToEvent": "webapp/source/classes/controllers/AddPersonToEvent",
         "EventsServiceProvider": "webapp/source/classes/services/eventService",
