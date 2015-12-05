@@ -1,18 +1,21 @@
 define(['lafete'], function (lafete) {
 
-
-
          var EventController = function($scope, $http, EventsService) {
-            $http.get("/api/events").then(function (data) {
-                console.log("events", data.data.events);
-                $scope.events = data.data.events;
-                console.log("I am scope.events", $scope.events);
-            })
+
+             $scope.init = function(){
+                 EventsService.getAllEvents(function (data){
+                     console.log("events", data.data.events);
+                     $scope.events = data.data.events;
+                     console.log("I am scope.events", $scope.events);
+                 });
+             };
+
+             $scope.init();
          };
 
-         lafete.controller("EventController",EventController);
-
          EventController.$inject = ["$scope", "$http", "EventsService"];
+
+         lafete.controller("EventController",EventController);
 
          return EventController;
 });

@@ -9,9 +9,9 @@ define(['lafete'], function (lafete) {
 
             return {
                 getAllEvents: function (call){
-                    $http.get("/api/events", function (data){
+                    $http.get("/api/events").then(function (data){
                         call(data);
-                    })
+                    });
                 }
                 ,
                 saveNewEvent: function (event, call) {
