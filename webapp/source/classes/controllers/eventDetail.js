@@ -42,7 +42,6 @@ define(['lafete','moment'], function (lafete,moment) {
             //console.log("from delete guest", guest);
             guest.canceled = true;
             GuestService.updateGuest (guest ,event._id, function (data){
-                console.log("I enter");
                 $scope.changeEditableStatus(guest);
                 $scope.getEventDetails(event._id);
             });

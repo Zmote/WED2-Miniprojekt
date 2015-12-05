@@ -29,22 +29,24 @@ define(["angular","angularMocks",
 
                 EventsService = $injector.get("EventsService");
                 GuestService = $injector.get("GuestService");
-                $controller('EventDetail', {
+                var EventDetail = $controller('EventDetail', {
                     $scope: $scope,
-                    EventsService:EventsService
+                    EventsService:EventsService,
+                    $routeParams:{id:2}
                 });
             }));
 
             beforeEach(function(){
                 event = {"name":"HSR-Party im Gebäude 5","description":"Party an der HSR","targetGroup":"Studenten und Eltern","contributionDescription":"Kuchen","location":{"name":"HSR","street":"Oberseestrasse","plz":8640,"city":"Rapperswil"},"times":{"begin":1447542000000,"end":1479337200000},"maximalAmountOfGuests":5,"guests":[{"id":"4JQe-bNEg","name":"Michael","contribution":"Schoggi-Kuchen","comment":"Bin sicher zu fr�h","canceled":false},{"id":"4Jxml-ZNVe","name":"Hans","contribution":"Hotdog-Cake","comment":"Döner Kebab","canceled":true},{"id":"EkW1x7u4e","name":"Cemil","contribution":"Wasup","comment":"Nichts los","canceled":false}],"_id":"yXJu73m5O02nUj8L"};
                 data = {data: event};
+                $httpBackend.expectGET('/api/events/2');
+                $httpBackend.whenGET('/api/events/2').respond(200,event);
             });
 
             afterEach(function(){
-                //->if we want this implemented, a lot of restructuring with $httpBackend will be necessary
-                //meaning every calls specific request needs to be caught and responded properly
-                //$httpBackend.verifyNoOutstandingExpectation();
-                //$httpBackend.verifyNoOutstandingRequest();
+                $httpBackend.flush();
+                $httpBackend.verifyNoOutstandingExpectation();
+                $httpBackend.verifyNoOutstandingRequest();
             });
 
             it("should call $scope.getEventDetails on init",function(){
@@ -104,8 +106,12 @@ define(["angular","angularMocks",
             });
 
             it("should change canceled status to true on calling $scope.deleteGuest",function(){
-                var myguest = {name:"Zafer",contribution:"Coca Cola",comment:"All is well", canceled:false};
-                $scope.deleteGuest(myguest,{});
+                var myguest = {id: 2,name:"Zafer",contribution:"Coca Cola",comment:"All is well", canceled:false};
+                $httpBackend.whenPOST('/api/events/1/guests/2').respond(200);
+                $httpBackend.expectPOST('/api/events/1/guests/2');
+                $httpBackend.expectGET('/api/events/1');
+                $httpBackend.whenGET('/api/events/1').respond(200,event);
+                $scope.deleteGuest(myguest,{_id:1});
                 expect(myguest.canceled).toBe(true);
             });
 
@@ -118,8 +124,12 @@ define(["angular","angularMocks",
 
             it("should call $scope.changeEditableStatus on calling $scope.deleteGuest",function(){
                 spyOn($scope,"changeEditableStatus");
-                var myguest = {name:"Zafer",contribution:"Coca Cola",comment:"All is well", canceled:false};
-                $scope.deleteGuest(myguest,{});
+                $httpBackend.whenPOST('/api/events/1/guests/2').respond(200);
+                $httpBackend.expectPOST('/api/events/1/guests/2');
+                $httpBackend.expectGET('/api/events/1');
+                $httpBackend.whenGET('/api/events/1').respond(200,event);
+                var myguest = {id:2,name:"Zafer",contribution:"Coca Cola",comment:"All is well", canceled:false};
+                $scope.deleteGuest(myguest,{_id:1});
                 expect($scope.changeEditableStatus).toHaveBeenCalled();
             });
 

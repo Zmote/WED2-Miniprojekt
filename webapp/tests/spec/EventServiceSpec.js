@@ -13,7 +13,7 @@ define(["angular","angularMocks",
 
         describe('Event service test cases', function() {
             var EventsService,eventsBefore,eventsAfter,event,timeout,$location,form;
-                beforeEach(module("lafete"));
+            beforeEach(module("lafete"));
             beforeEach(inject(function($injector){
                 $location = $injector.get("$location");
                 var $controller = $injector.get("$controller");
