@@ -37,7 +37,6 @@ define(['lafete'], function (lafete) {
 
                 },
                 deleteEvent : function (event, call){
-                    console.log("I entere in delete");
                     $http.post('/api/events/delete/'+event._id ).then(function (data) {
                         call(data);
                     });

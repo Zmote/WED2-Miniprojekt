@@ -81,10 +81,12 @@ define(['lafete','moment'], function (lafete,moment) {
             });
         };
 
+        $scope.changeLocation = function (data){
+            $location.path("#/events");
+        };
+
         $scope.deleteEvent = function (event){
-            EventsService.deleteEvent(event, function (data){
-                $location.path("#/events");
-            });
+            EventsService.deleteEvent(event, $scope.changeLocation);
         };
 
         $scope.init();

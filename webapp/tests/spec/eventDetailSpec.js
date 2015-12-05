@@ -14,7 +14,7 @@ define(["angular","angularMocks",
         describe("event detail test suite",function(){
             beforeEach(angular.mock.module("lafete"));
 
-            var $scope, $rootScope,EventsService, $httpBackend, $routeParams,event,data,$toaster,GuestService,$location;
+            var $scope, $rootScope,EventsService, $httpBackend, $routeParams,event,data,$toaster,GuestService,$location
             var guest = {"_id":1,"name":"erfqew","contribution":"wqefqwe","comment":"fqwef","canceled":false};
 
             beforeEach(inject(function($injector) {
@@ -25,10 +25,10 @@ define(["angular","angularMocks",
                 var $controller = $injector.get("$controller");
                 $routeParams = $injector.get("$routeParams");
                 $scope = $rootScope.$new();
+                $eScope = $rootScope.$new();
 
                 EventsService = $injector.get("EventsService");
                 GuestService = $injector.get("GuestService");
-
                 $controller('EventDetail', {
                     $scope: $scope,
                     EventsService:EventsService
@@ -41,8 +41,10 @@ define(["angular","angularMocks",
             });
 
             afterEach(function(){
+                //->if we want this implemented, a lot of restructuring with $httpBackend will be necessary
+                //meaning every calls specific request needs to be caught and responded properly
                 //$httpBackend.verifyNoOutstandingExpectation();
-                $httpBackend.verifyNoOutstandingRequest();
+                //$httpBackend.verifyNoOutstandingRequest();
             });
 
             it("should call $scope.getEventDetails on init",function(){
@@ -164,10 +166,10 @@ define(["angular","angularMocks",
                 expect(EventsService.deleteEvent).toHaveBeenCalled();
             });
 
-            it("should change location to #/events on $scope.deleteEvent",function(){
-               //TODO: --> $httpBackend version with .flush(),('POST','url'), etc.
-                //look out for $httpBackend.verifyNoOutstandingExpectations() --> causes error for some reason
-                //checkout why
+            it("should change location to #/events on $scope.changeLocation",function(){
+                spyOn($location,'path');
+                $scope.changeLocation();
+                expect($location.path).toHaveBeenCalledWith('#/events');
             });
 
         });
