@@ -13,7 +13,7 @@ define(['lafete'], function (lafete) {
              $scope.getEventDetails = function(eventId){
                  EventsService.getEventById (eventId, function (data){
                      $scope.selectedEvent = data.data;
-                     console.log("selected event", data.data);
+                     //console.log("selected event", data.data);
                  });
              };
 

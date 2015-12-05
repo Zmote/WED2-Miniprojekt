@@ -108,7 +108,7 @@ define(["angular","angularMocks",
             });
 
             it("should call $http.post on EventsService.saveNewGuest",function(){
-                $httpBackend.whenPOST("/api/events/1/guests").respond(200,event);
+                $httpBackend.whenPOST("/api/events/1/guests").respond(200,guest);
                 spyOn($http,"post").and.callThrough();
                 var result;
                 EventsService.saveNewGuest(guest,1,function(data){
