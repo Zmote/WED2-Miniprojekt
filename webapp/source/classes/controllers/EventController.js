@@ -4,9 +4,9 @@ define(['lafete'], function (lafete) {
 
              $scope.init = function(){
                  EventsService.getAllEvents(function (data){
-                     console.log("events", data.data.events);
+                     //console.log("events", data.data.events);
                      $scope.events = data.data.events;
-                     console.log("I am scope.events", $scope.events);
+                     //console.log("I am scope.events", $scope.events);
                  });
              };
 
