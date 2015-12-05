@@ -31,6 +31,7 @@ require.config({
         "lafete": "webapp/source/classes/modules/lafete",
         "ControllerReferences": "webapp/source/classes/controllers/controllerReferences",
         "EventDetail":"webapp/source/classes/controllers/eventDetail",
+        "EventGuestsController":"webapp/source/classes/controllers/EventGuestsController",
         "EventController": "webapp/source/classes/controllers/EventController",
         "AddEventController": "webapp/source/classes/controllers/AddEventController",
         "AddPersonToEvent": "webapp/source/classes/controllers/AddPersonToEvent",
