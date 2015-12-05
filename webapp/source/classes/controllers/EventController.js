@@ -1,10 +1,21 @@
-define([], function () {
-     angular
-         .module("lafete")
-         .controller("EventController",["$scope", "$http", function($scope, $http){
+define(['lafete'], function (lafete) {
 
-            $http.get("/api/events").then(function(data){
-                $scope.events = data.data.events;
-            })
-         }])
+         var EventController = function($scope, $http, EventsService) {
+
+             $scope.init = function(){
+                 EventsService.getAllEvents(function (data){
+                     console.log("events", data.data.events);
+                     $scope.events = data.data.events;
+                     console.log("I am scope.events", $scope.events);
+                 });
+             };
+
+             $scope.init();
+         };
+
+         EventController.$inject = ["$scope", "$http", "EventsService"];
+
+         lafete.controller("EventController",EventController);
+
+         return EventController;
 });

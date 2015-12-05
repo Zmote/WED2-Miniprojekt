@@ -36,7 +36,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input id="beginDate" name="beginDate" ng-model="event.times.begin" ng-class="{'form-control input-md alert-danger':!cemil && !event.times.begin,'form-control input-md':cemil || event.times.begin}" required placeholder="MM.TT.YYYY" type="text">
+                        <input id="beginDate" name="beginDate" ng-model="event.times.begin" ng-class="{'form-control input-md alert-danger':!cemil && !event.times.begin,'form-control input-md':cemil || event.times.begin}" required placeholder="TT.MM.YYYY" type="text">
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input id="endDate" name="endDate" ng-model="event.times.end" ng-class="{'form-control input-md alert-danger':!cemil && !event.times.end,'form-control input-md':cemil || event.times.end}" required placeholder="MM.TT.YYYY" type="text">
+                        <input id="endDate" name="endDate" ng-model="event.times.end" ng-class="{'form-control input-md alert-danger':!cemil && !event.times.end,'form-control input-md':cemil || event.times.end}" required placeholder="TT.MM.YYYY" type="text">
                     </div>
                 </div>
                 <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.endDate.$touched">
@@ -111,7 +111,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="zipCode">Zip-Code</label>
                     <div class="col-md-4">
-                        <input id="zipCode" name="zipCode" placeholder="Zip-Code" required ng-model="event.location.zipCode"  ng-class="{'form-control input-md alert-danger':!cemil && !event.location.zipCode,'form-control input-md':cemil || event.location.zipCode}" type="text">
+                        <input id="zipCode" name="zipCode" placeholder="Zip-Code" required ng-model="event.location.zipCode"  ng-class="{'form-control input-md alert-danger':!cemil && !event.location.zipCode,'form-control input-md':cemil || event.location.zipCode}" type="number">
                     </div>
                     <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.zipCode.$touched">
                         <div class="text-danger" ng-show="eventForm.zipCode.$error.required">Zip-Code is Required</div>
@@ -133,7 +133,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="maximalAmountOfGuests">Max. Guests</label>
                     <div class="col-md-4">
-                        <input id="maximalAmountOfGuests" name="maximalAmountOfGuests" required placeholder="Maximal amount of guests" ng-model="event.maximalAmountOfGuests"  ng-class="{'form-control input-md alert-danger':!cemil && !event.maximalAmountOfGuests,'form-control input-md':cemil || event.maximalAmountOfGuests}" type="text">
+                        <input id="maximalAmountOfGuests" name="maximalAmountOfGuests" required placeholder="Maximal amount of guests" ng-model="event.maximalAmountOfGuests"  ng-class="{'form-control input-md alert-danger':!cemil && !event.maximalAmountOfGuests,'form-control input-md':cemil || event.maximalAmountOfGuests}" type="number">
                     </div>
                     <div class="col-md-4 padding-top-5" ng-show="eventForm.$submitted || eventForm.maximalAmountOfGuests.$touched">
                         <div class="text-danger" ng-show="eventForm.maximalAmountOfGuests.$error.required">Max. Amount of Guests required</div>

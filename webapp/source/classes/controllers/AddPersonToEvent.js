@@ -1,37 +1,38 @@
 /**
  * Created by Dogan on 23.11.15.
  */
-define([], function () {
+define(['lafete'], function (lafete) {
 
-    angular
-        .module("lafete")
-        .controller("AddPersonToEvent", AddPersonToEvent);
+    var AddPersonToEvent = function($scope,$http, EventsService, $routeParams, toaster,$location){
 
-    function AddPersonToEvent($scope,$http, EventsService, $routeParams, toaster){
         var guest = $scope.guest = {};
         guest.name = "";
         guest.contribution = "";
         guest.comment = "";
         guest.canceled = false;
 
-        $scope.saveNewGuest = function ( guest ){
-            console.log(guest)
-            EventsService.saveNewGuest(guest, $routeParams.eventId, function (data){
-                if(data.status == 200){
-                    $scope.guest = {};
-                    toaster.pop('success', "Succesfully added new Guest!");
-                    console.log("result of saved guest", data);
-                }else{
-                    toaster.pop('error',"Couldn't add new Guest!");
-                    console.log("Error: ", data.status + " " + data.statusText);
-                }
-            });
+        $scope.checkResponse = function (data){
+            if(data.status == 200){
+                $scope.guest = {};
+                $scope.savedGuest = data;
+                toaster.pop('success', "Succesfully added new Guest!");
+                $location.path("/eventDetail/"+ $routeParams.eventId);
+
+            }else{
+                toaster.pop('error',"Couldn't add new Guest!");
+                console.log("Error: ", data.status + " " + data.statusText);
+            }
         };
 
-    }
+        $scope.saveNewGuest = function ( guest ){
+            EventsService.saveNewGuest(guest, $routeParams.eventId,$scope.checkResponse);
+        };
 
-    AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams","toaster"];
+    };
 
+    AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams","toaster","$location"];
 
+    lafete.controller("AddPersonToEvent", AddPersonToEvent);
 
+    return AddPersonToEvent;
 });

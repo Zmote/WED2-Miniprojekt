@@ -2,7 +2,7 @@
 
 <div class="row well">
  <div class="col-xs-10">
-  <h1 class="text-left margin-left-20">{{selectedEvent.data.name}}</h1>
+  <h1 class="text-left margin-left-20">{{selectedEvent.name}}</h1>
  </div>
  <div class="col-xs-2">
   <a  href="#/events" class="btn btn-info margin-top-20 margin-right-10 pull-right">
@@ -11,55 +11,177 @@
  </div>
 </div>
 
-<div class=".col-md-6 .col-md-offset-3 container center">
+<div class=".col-md-12 .col-md-offset-3 container center">
 
- <div class="highlight">
+ <div class="">
   <div class="col-xs-12">
 
-    <span class="btn-clipboard .col-md-4 .col-md-offset-4 pull-right">
-      <div class="col-sm-8 margin-top-10">
-       Guests :
-      </div>
-      <div class="col-sm-4">
-       <button class="btn btn-info">
-        {{selectedEvent.data.guests.length}}
-       </button>
-      </div>
-   </span>
 
-   <div class="col-sm-12">
+
+   <div class="col-sm-12 margin-bottom-20 ">
     <hr>
-       <h4 ng-show="selectedEvent.data.description" class="text-info">Beschreibung</h4>
-       <div>{{selectedEvent.data.description}}</div>
-       <h4 ng-show="selectedEvent.data.targetGroup" class="text-info">Zielgruppe</h4>
-       <div>{{selectedEvent.data.targetGroup}}</div>
-       <h4 ng-show="selectedEvent.data.contributionsDescription" class="text-info">Event-Beiträge</h4>
-       <div>{{selectedEvent.data.contributionsDescription}}</div>
-       <h4 ng-show="selectedEvent.data.location"class="text-info">Adresse</h4>
-       <div>{{selectedEvent.data.location.name}}</div>
-       <div>{{selectedEvent.data.location.street}}</div>
-       <div>{{selectedEvent.data.location.plz}} {{selectedEvent.data.location.city}}</div>
-       <h4 ng-show="selectedEvent.data.times" class="text-info">Zeit</h4>
-       <div>{{selectedEvent.data.times.begin | date:"fullDate"}} bis {{selectedEvent.data.times.end | date:"fullDate"}}</div>
-   </div>
+       <span class="  .col-md-4 .col-md-offset-4 pull-right">
+          <div class="col-sm-8 margin-top-10">
 
-   <div class="col-sm-12">
-   <hr>
-       <h4 class="text-info">Gäste</h4>
-       <div class="col-sm-4 border-on-left margin-bottom-10" ng-repeat="guest in selectedEvent.data.guests">
-           <div ng-hide="guest.canceled" >
-               <h5><strong>{{guest.name}}</strong></h5>
-               <div ng-show="guest.comment">Kommentar: {{guest.comment}}</div>
-               <div ng-show="guest.contribution">Beitrag: {{guest.contribution}}</div>
+          </div>
+          <div class="col-sm-12">
+              <a class="btn btn-info" href="#eventGuests/{{selectedEvent._id}}">
+                  Guests : {{registeredUsers.length}}
+              </a>
+              <a type="button pull-right" ng-click="changeEditableStatus(selectedEvent)" class="btn btn-success  " >
+                  <i class="glyphicon glyphicon-edit"></i>
+              </a>
+          </div>
+       </span>
+
+
+      <div ng-show="selectedEvent.isEditable"  >
+           <h4 ng-show="selectedEvent.description" class="text-info">Beschreibung</h4>
+           <div>{{selectedEvent.description}}</div>
+           <h4 ng-show="selectedEvent.targetGroup" class="text-info">Zielgruppe</h4>
+           <div>{{selectedEvent.targetGroup}}</div>
+           <h4 ng-show="selectedEvent.contributionDescription" class="text-info">Event-Beiträge</h4>
+           <div>{{selectedEvent.contributionDescription}}</div>
+           <h4 ng-show="selectedEvent.location"class="text-info">Adresse</h4>
+           <div>{{selectedEvent.location.name}}</div>
+           <div>{{selectedEvent.location.street}}</div>
+           <div>{{selectedEvent.location.zipCode}} {{selectedEvent.location.city}}</div>
+           <h4 ng-show="selectedEvent.times" class="text-info">Zeit</h4>
+           <div>{{selectedEvent.times.begin | date:"dd.MM.yyyy"}} bis {{selectedEvent.times.end | date:"dd.MM.yyyy"}} </div>
+      </div>
+       <div ng-show="!selectedEvent.isEditable" class="col-sm-12 margin-bottom-20 margin-top-20">
+           <div class="form-group">
+               <h4   class="text-info">Event Name</h4>
+               <input    class="form-control margin-top-20" ng-model="selectedEvent.name">
            </div>
+
+           <div class="form-group">
+               <h4   class="text-info">Beschreibung</h4>
+               <input   class="form-control margin-top-20" ng-model="selectedEvent.description">
+           </div>
+
+           <div class="form-group">
+               <h4   class="text-info">Zielgruppe</h4>
+               <input   class="form-control margin-top-20" ng-model="selectedEvent.targetGroup">
+           </div>
+
+           <div class="form-group">
+               <h4   class="text-info">Max. Anzahl Gäste</h4>
+               <input  class="form-control margin-top-20" ng-model="selectedEvent.maximalAmountOfGuests">
+           </div>
+
+           <div class="form-group">
+               <h4   class="text-info">Event-Beiträge</h4>
+               <input  class="form-control margin-top-20" ng-model="selectedEvent.contributionDescription">
+           </div>
+
+           <div class="form-group">
+               <h4   class="text-info">Adresse</h4>
+               <input   class="form-control margin-top-20" ng-model="selectedEvent.location.name">
+           </div>
+
+           <div class="form-group">
+               <h4   class="text-info">Street</h4>
+               <input    class="form-control margin-top-20" ng-model="selectedEvent.location.street">
+           </div>
+
+
+           <div class="form-group">
+               <h4  class="text-info">Postleitzahl</h4>
+               <input   class="form-control margin-top-20" ng-model="selectedEvent.location.zipCode">
+           </div>
+
+           <div class="form-group">
+               <h4   class="text-info">City</h4>
+               <input  class="form-control margin-top-20" ng-model="selectedEvent.location.city">
+           </div>
+
+           <div class="form-group">
+               <h4   class="text-info">Begin Zeit</h4>
+               <input  class="form-control margin-top-20" ng-model="selectedEvent.times.begin">
+           </div>
+
+
+           <div class="form-group" >
+               <h4   class="text-info">End Zeit</h4>
+               <input   class="form-control margin-top-20"   ng-model="selectedEvent.times.end">
+           </div>
+
+
+
+           <div class="col-sm-12 margin-top-20 ">
+               <div class="col-sm-1 pull-right" ng-show="!selectedEvent.isEditable" style="">
+                   <button type="button" ng-click="updateEvent(selectedEvent)" class="btn btn-info margin-right-20">
+                       <i class="glyphicon glyphicon-saved"></i>
+                       Update
+                   </button>
+               </div>
+               <div class="col-sm-1 pull-right margin-right-10" ng-show="!selectedEvent.isEditable">
+                   <button type="button" ng-click="deleteEvent(selectedEvent)" class="btn btn-danger margin-right-20">
+                       <i class="glyphicon glyphicon-trash"></i>
+                       Delete
+                   </button>
+               </div>
+
+               <div class="col-sm-1 pull-right margin-right-10" ng-show="!selectedEvent.isEditable">
+                   <button type="button" ng-click="selectedEvent.isEditable=true" class="btn btn-success  ">
+                       <i class="glyphicon glyphicon-remove"></i>
+                       Cancel
+                   </button>
+               </div>
+
+           </div>
+
        </div>
 
-    <div class="col-xs-2 pull-right">
-     <a  href="#/event/{{selectedEvent.data.id}}/person" class="btn btn-info margin-top-20 margin-right-10 pull-right">
-      <i class="glyphicon glyphicon-plus"></i>
-     </a>
-    </div>
+   </div>
 
+
+  <div class="col-xs-12">
+      <h4 class="text-info col-xs-4">Gäste</h4>
+      <div class="col-md-4 pull-right">
+          <div  ng-click="addGuest(selectedEvent)" class="btn btn-info pull-right">
+              <i class="glyphicon glyphicon-plus"></i>
+              Add Guests
+          </div>
+      </div>
+  </div>
+  <div class="col-md-12">
+      <hr>
+       <div  ng-if="guest.name"
+             class="col-md-4 guest"
+             ng-repeat="guest in selectedEvent.guests">
+           <div ng-hide="guest.canceled" class="bs-callout bs-callout-info">
+               <div class="hover-btn col-sm-4 pull-right margin-bottom-20" ng-init="guest.isEditable = true">
+                   <div class=" col-sm-12" ng-show="guest.isEditable">
+                       <button type="button pull-right" ng-click="changeEditableStatus(guest)" class="btn btn-info margin-right-20" >
+                           <i class="glyphicon glyphicon-edit"></i>
+                       </button>
+                   </div>
+                   <div class="col-sm-5"  ng-show="!guest.isEditable">
+                       <button type="button"  ng-click="updateGuest(guest,selectedEvent)" class="btn btn-info margin-right-20" >
+                           <i class="glyphicon glyphicon-saved"></i>
+                       </button>
+                   </div>
+                   <div class="col-sm-5"   ng-show="!guest.isEditable">
+                       <button type="button" ng-click="deleteGuest(guest,selectedEvent)" class="btn btn-danger margin-right-20"  >
+                           <i class="glyphicon glyphicon-trash"></i>
+                       </button>
+                   </div>
+               </div>
+               <div ng-show="guest.isEditable" class="margin-right-10 margin-left-10">
+                   <h5><strong>{{guest.name}}</strong></h5>
+                   <div ng-show="guest.comment">Kommentar: {{guest.comment}}</div>
+                   <div ng-show="guest.contribution">Beitrag: {{guest.contribution}}</div>
+               </div>
+               <div ng-show="!guest.isEditable" class="margin-top-20 margin-right-10">
+                   <h5><strong>{{guest.name}}</strong></h5>
+                   <input class="form-control" ng-model="guest.comment"> </input>
+                   <input class="form-control margin-top-20" ng-model="guest.contribution"> </input>
+               </div>
+
+            </div>
+       </div>
    </div>
 
  </div>
