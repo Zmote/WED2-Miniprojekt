@@ -20,7 +20,7 @@ define(['lafete'], function (lafete) {
 
             }else{
                 toaster.pop('error',"Couldn't add new Guest!");
-                console.log("Error: ", data.status + " " + data.statusText);
+               // console.log("Error: ", data.status + " " + data.statusText);
             }
         };
 
