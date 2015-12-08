@@ -13,6 +13,8 @@ define(["angular","angularMocks",
 
         describe('Event service test cases', function() {
             var EventsService,$location,form,$http,events,event,$httpBackend,guest;
+
+
             beforeEach(module("lafete"));
             beforeEach(inject(function($injector){
                 $httpBackend = $injector.get("$httpBackend");
@@ -112,7 +114,7 @@ define(["angular","angularMocks",
                 spyOn($http,"post").and.callThrough();
                 var result;
                 EventsService.saveNewGuest(guest,1,function(data){
-                    console.log("I am dat:",data);
+                   // console.log("I am dat:",data);
                     result = data;
                 });
                 $httpBackend.flush();
@@ -149,6 +151,8 @@ define(["angular","angularMocks",
                 expect($http.post).toHaveBeenCalled();
                 expect($http.post).toHaveBeenCalledWith("/api/events/delete/1");
             });
+
+
 
         });
 
