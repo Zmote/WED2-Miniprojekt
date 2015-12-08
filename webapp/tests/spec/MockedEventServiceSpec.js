@@ -94,7 +94,7 @@ define(["angular","angularMocks",
 
 
             it("should get initial of events array length equal to 0", function (){
-                expect(mockEventService.getAllEvents().length).toBe(0);
+                expect(EventsService.getAllEvents().length).toBe(0);
             })
 
             it("should saved events name", function (){
