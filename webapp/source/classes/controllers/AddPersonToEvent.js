@@ -1,7 +1,7 @@
 /**
  * Created by Dogan on 23.11.15.
  */
-define([], function (lafete) {
+define([], function () {
 
     var AddPersonToEvent = function($scope,$http, EventsService, $routeParams, toaster,$location){
 

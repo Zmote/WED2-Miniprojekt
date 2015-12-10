@@ -1,4 +1,4 @@
-define([], function (lafete) {
+define([], function () {
 
 
 
