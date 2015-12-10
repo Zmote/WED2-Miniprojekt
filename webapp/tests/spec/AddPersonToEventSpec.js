@@ -3,14 +3,12 @@ define(["angular","angularMocks",
 		"angular-toast",
 		"moment",
 		"lafete",
-		"ControllerReferences",
-		"EventsServiceProvider",
+		"EventsService",
 		"angularResource",
 	 	"AddPersonToEvent",
-		"GuestServiceProvider"
+		"GuestService"
 	] ,
 	function ( ) {
-
 
 	describe('Add person to event controller suit', function() {
         beforeEach(angular.mock.module("lafete"));

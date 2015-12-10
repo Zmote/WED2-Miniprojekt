@@ -1,7 +1,7 @@
 /**
  * Created by Dogan on 23.11.15.
  */
-define(['lafete'], function (lafete) {
+define([], function () {
 
 
         var GuestService = function($http){
@@ -20,7 +20,5 @@ define(['lafete'], function (lafete) {
                 }
         };
 
-        lafete.factory("GuestService", GuestService);
-        GuestService.$inject = ["$http"];
         return GuestService;
 });

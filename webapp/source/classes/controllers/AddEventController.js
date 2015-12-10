@@ -1,4 +1,4 @@
-define(['moment','lafete'], function (moment,lafete) {
+define(['moment'], function (moment) {
 
          var AddEventController = function ($scope,$http, EventsService,toaster,$location){
              $scope.cemil = true;
@@ -59,10 +59,6 @@ define(['moment','lafete'], function (moment,lafete) {
              }
 
          };
-
-         AddEventController.$inject =  ["$scope", "$http", "EventsService","toaster","$location"];
-
-         lafete.controller("AddEventController", AddEventController);
 
          return AddEventController;
 

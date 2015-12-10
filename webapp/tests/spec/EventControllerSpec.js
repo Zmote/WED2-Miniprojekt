@@ -4,7 +4,6 @@ define(["angular","angularMocks",
         "moment",
         "lafete",
         "EventController",
-        "ControllerReferences",
         "angularResource"
     ] ,
     function () {

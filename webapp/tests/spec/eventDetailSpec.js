@@ -3,11 +3,10 @@ define(["angular","angularMocks",
         "angular-toast",
         "moment",
         "lafete",
-        "ControllerReferences",
-        "EventsServiceProvider",
+        "EventsService",
         "angularResource",
         "EventDetail",
-        "GuestServiceProvider"
+        "GuestService"
     ] ,
     function ( ) {
 

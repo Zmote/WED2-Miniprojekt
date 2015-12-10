@@ -1,32 +1,42 @@
 /**
  * Created by Dogan on 12.11.15.
  */
-define(['angular','ngRoute','angular-animate','angular-toast' ,'moment' ], function (angular ,ngRoute , Animate, Toaster,moment) {
+define(['angular','ngRoute','angular-animate','angular-toast' ,'moment',
+        'EventsService','GuestService','EventDetail','AddPersonToEvent',
+        'AddEventController','EventGuestsController','EventController'],
+    function (angular ,ngRoute , Animate, Toaster,moment,EventsService,
+            GuestService,EventDetail,AddPersonToEvent,AddEventController,
+            EventGuestsController,EventController) {
 
 
     var Lafete = angular.module('lafete', ["ngRoute" ,"ngAnimate","toaster"]);
 
+    Lafete.factory("GuestService", GuestService);
+    GuestService.$inject = ["$http"];
 
+    Lafete.factory("EventsService", EventsService );
+    EventsService.$inject = ["$http"];
 
-    angular.element(document).ready(function() {
+    Lafete.controller("EventGuestsController", EventGuestsController);
+    EventGuestsController.$inject =  ["$scope", "$http","$routeParams", "EventsService"];
 
-        require(["classes/controllers/controllerReferences"], function (references){
-            require(references, function(){
-                angular.bootstrap(document, [Lafete.name]);
-            });
+    Lafete.controller("EventDetail", EventDetail);
+    EventDetail.$inject =  ["$scope", "$http", "EventsService","$routeParams","GuestService","$location","$filter","toaster"];
 
-        })
+    Lafete.controller("EventController",EventController);
+    EventController.$inject = ["$scope", "$http", "EventsService"];
 
-    });
+    Lafete.controller("AddPersonToEvent", AddPersonToEvent);
+    AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams","toaster","$location"];
 
+    Lafete.controller("AddEventController", AddEventController);
+    AddEventController.$inject =  ["$scope", "$http", "EventsService","toaster","$location"];
 
     Lafete.config(function($routeProvider) {
         $routeProvider
             .when('/events', {
                 templateUrl: './views/events.html',
                 controller: 'EventController'
-
-
             })
             .when('/addEvents', {
                 templateUrl: './views/addEvent.html',

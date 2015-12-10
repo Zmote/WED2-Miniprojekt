@@ -1,9 +1,7 @@
 /*
  * Created by Dogan on 23.11.15.
  */
-define(['lafete'], function (lafete) {
-
-
+define([], function () {
 
         var EventsService = function($http){
 
@@ -44,9 +42,6 @@ define(['lafete'], function (lafete) {
             }
 
         };
-
-        lafete.factory("EventsService", EventsService );
-        EventsService.$inject = ["$http"];
 
         return EventsService;
 

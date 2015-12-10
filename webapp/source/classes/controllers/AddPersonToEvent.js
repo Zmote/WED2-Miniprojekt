@@ -1,7 +1,7 @@
 /**
  * Created by Dogan on 23.11.15.
  */
-define(['lafete'], function (lafete) {
+define([], function (lafete) {
 
     var AddPersonToEvent = function($scope,$http, EventsService, $routeParams, toaster,$location){
 
@@ -29,10 +29,6 @@ define(['lafete'], function (lafete) {
         };
 
     };
-
-    AddPersonToEvent.$inject =  ["$scope", "$http", "EventsService","$routeParams","toaster","$location"];
-
-    lafete.controller("AddPersonToEvent", AddPersonToEvent);
 
     return AddPersonToEvent;
 });

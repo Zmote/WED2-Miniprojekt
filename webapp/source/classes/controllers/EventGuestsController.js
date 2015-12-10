@@ -1,4 +1,4 @@
-define(['lafete'], function (lafete) {
+define([], function (lafete) {
 
 
 
@@ -23,9 +23,6 @@ define(['lafete'], function (lafete) {
 
 
          }
-    lafete.controller("EventGuestsController", EventGuestsController);
-
-     EventGuestsController.$inject =  ["$scope", "$http","$routeParams", "EventsService"];
 
     return EventGuestsController;
 });

@@ -1,4 +1,4 @@
-define(['lafete','moment'], function (lafete,moment) {
+define(['moment'], function (moment) {
 
     var EventDetail = function($scope,$http, EventsService, $routeParams,GuestService, $location,$filter,toaster){
 
@@ -90,10 +90,6 @@ define(['lafete','moment'], function (lafete,moment) {
 
         $scope.init();
     }
-
-    lafete.controller("EventDetail", EventDetail);
-
-    EventDetail.$inject =  ["$scope", "$http", "EventsService","$routeParams","GuestService","$location","$filter","toaster"];
 
     return EventDetail;
 

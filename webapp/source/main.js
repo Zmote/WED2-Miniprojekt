@@ -10,7 +10,13 @@ require.config({
 
         'angular': './frameworks/angular/angular.min',
         'ngRoute': './libraries/angular-route/angular-route',
-        'event-service' : './classes/services/eventService',
+        'EventsService':'./classes/services/eventService',
+        'GuestService':'./classes/services/guestService',
+        'EventDetail':'./classes/controllers/eventDetail',
+        'AddPersonToEvent':'./classes/controllers/AddPersonToEvent',
+        'AddEventController':'./classes/controllers/AddEventController',
+        'EventGuestsController':'./classes/controllers/EventGuestsController',
+        'EventController':'./classes/controllers/EventController',
         'angular-toast': './libraries/AngularJS-Toaster/toaster',
         'angular-animate' : './libraries/angular-animate/angular-animate',
         'moment' : './libraries/moment/moment',
@@ -24,7 +30,6 @@ require.config({
         },
         'ngRoute': {
             deps: ['angular']
-
         },
         'angular-animate': {
             deps: ['angular']
@@ -37,4 +42,7 @@ require.config({
 });
 
 /*  Start the application */
-require(['lafete']);
+require(['angular','lafete'],function(Angular,Lafete){
+    Angular.bootstrap(document, ['lafete']);
+
+});

@@ -3,12 +3,11 @@ define(["angular","angularMocks",
         "angular-toast",
         "moment",
         "lafete",
-        "ControllerReferences",
-        "EventsServiceProvider",
+        "EventsService",
         "EventGuestsController",
         "angularResource",
         "EventDetail",
-        "GuestServiceProvider"
+        "GuestService"
     ] ,
     function ( ) {
         describe("event detail test suite",function() {
